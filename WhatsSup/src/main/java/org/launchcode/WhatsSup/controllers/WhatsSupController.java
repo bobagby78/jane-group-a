@@ -15,7 +15,7 @@ public class WhatsSupController {
     @GetMapping("goodbye")
     @ResponseBody
     public String goodbye() {
-        return "I don't know, wish I had an app to help me think of a cool recipe.";
+        return "I don't know, wish I had an app to help me find a cool recipe.";
     }
 
 }
