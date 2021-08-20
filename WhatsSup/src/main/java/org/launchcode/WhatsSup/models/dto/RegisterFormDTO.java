@@ -1,6 +1,6 @@
-package org.launchcode.WhatsSup.models;
+package org.launchcode.WhatsSup.models.dto;
 
-public class RegisterFormDTO extends org.launchcode.WhatsSup.models.LoginFormDTO {
+public class RegisterFormDTO extends org.launchcode.WhatsSup.models.dto.LoginFormDTO {
 
     private String verifyPassword;
 

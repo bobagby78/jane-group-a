@@ -1,9 +1,6 @@
-package org.launchcode.WhatsSup.models;
+package org.launchcode.WhatsSup.models.dto;
 
-import com.sun.istack.NotNull;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class LoginFormDTO {
 
