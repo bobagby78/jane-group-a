@@ -1,8 +1,6 @@
 package org.launchcode.WhatsSup.models;
 
 import javax.persistence.Entity;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 @Entity
 public class Recipe extends AbstractEntity{
@@ -14,14 +12,13 @@ public class Recipe extends AbstractEntity{
     private int totalTimeMinutes;
     private int numServings;
     private String recipeDescription;
-    private HashMap<Ingredient, ArrayList> ingredients = new HashMap<>(); //not quite sure this is the route I should be going. Need to take some time to research.
-    private ArrayList<String> directions = new ArrayList<>();
+    private String ingredients; //
+    private String directions;
     private String notes;
 
-    public Recipe() {
-    }
+    public Recipe(){}
 
-    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, HashMap<Ingredient, ArrayList> ingredients, ArrayList<String> directions, String notes) {
+    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, String ingredients, String directions, String notes) {
         this.recipeTitle = recipeTitle;
         this.recipeAuthor = recipeAuthor;
         this.prepTimeMinutes = prepTimeMinutes;
@@ -81,19 +78,19 @@ public class Recipe extends AbstractEntity{
         this.recipeDescription = recipeDescription;
     }
 
-    public HashMap<Ingredient, ArrayList> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(HashMap<Ingredient, ArrayList> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
-    public ArrayList<String> getDirections() {
+    public String getDirections() {
         return directions;
     }
 
-    public void setDirections(ArrayList<String> directions) {
+    public void setDirections(String directions) {
         this.directions = directions;
     }
 
