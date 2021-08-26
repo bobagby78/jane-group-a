@@ -2,26 +2,14 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <head th:replace="fragments :: head"></head>
-    <link rel="stylesheet" href="styles.css">
     <title> My Kitchen</title>
+    <link rel="stylesheet" href="uniform.css">
 </head>
-<div>
-<img src="/Users/haleyallick/IdeaProjects/jane-group-a/0 Landing Page.jpg" alt="Spices">
-</div>
 
 <body class="container">
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Spices</th>
-        <th>Meats/Seafoods</th>
-        <th>Condiments</th>
-        <th>Sides</th>
-    </tr>
-    </thead>
     <form>
         <h2>Add Ingredient</h2>
         <form action="/ingredient/add">
@@ -37,13 +25,16 @@
             <input type="submit" value="Submit">
         </form>
 
-
-        <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
-
-        <p>Notice that the value of the "First name" field will not be submitted, because the input element does not have a name attribute.</p>
-
-
-    </form>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Spices</th>
+                <th>Meats/Seafoods</th>
+                <th>Condiments</th>
+                <th>Sides</th>
+            </tr>
+            </thead>
+        </table>
     <th:block th:each="ingredient : ${ingredients}">
         <tr>
             <td th:text="${ingredient.id}"></td>
@@ -57,6 +48,6 @@
         </tr>
     </th:block>
 </table>
-
+    </form>
 </body>
 </html>
