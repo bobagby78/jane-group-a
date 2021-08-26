@@ -34,20 +34,20 @@
                 <th>Sides</th>
             </tr>
             </thead>
-        </table>
-    <th:block th:each="ingredient : ${ingredients}">
-        <tr>
-            <td th:text="${ingredient.id}"></td>
-            <td th:text="${ingredient.name}"></td>
-            <td th:text="${ingredient.category}"></td>
-            <td th:text="${ingredient.purchaseDate}"></td>
-            <td>
-                <a th:href="@{/ingredients/add/{id}(id=${ingredient.id})}">Add</a>
-            </td>
-            </td>
-        </tr>
-    </th:block>
-</table>
+        </table>-->
+<!--    <th:block th:each="ingredient : ${ingredients}">-->
+<!--        <tr>-->
+<!--            <td th:text="${ingredient.id}"></td>-->
+<!--            <td th:text="${ingredient.name}"></td>-->
+<!--            <td th:text="${ingredient.category}"></td>-->
+<!--            <td th:text="${ingredient.purchaseDate}"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/ingredients/add/{id}(id=${ingredient.id})}">Add</a>-->
+<!--            </td>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
     </form>
 </body>
 </html>
