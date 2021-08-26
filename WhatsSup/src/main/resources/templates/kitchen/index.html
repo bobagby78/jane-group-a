@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <head th:replace="fragments :: head"></head>
+    <title> My Kitchen</title>
+</head>
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Spices</th>
+        <th>Meats/Seafoods</th>
+        <th>Condiments</th>
+        <th>Sides</th>
+    </tr>
+    </thead>
+    <th:block th:each="ingredient : ${ingredients}">
+        <tr>
+            <td th:text="${ingredient.id}"></td>
+            <td th:text="${ingredient.name}"></td>
+            <td th:text="${ingredient.category}"></td>
+            <td th:text="${ingredient.purchaseDate}"></td>
+            <td>
+                <a th:href="@{/ingredients/add/{id}(id=${ingredient.id})}">Add</a>
+            </td>
+            </td>
+        </tr>
+    </th:block>
+</table>
+
+</body>
+</html>
