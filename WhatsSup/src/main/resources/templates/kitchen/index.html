@@ -2,8 +2,14 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <head th:replace="fragments :: head"></head>
+    <link rel="stylesheet" href=""><img src="../../../../../../spices.jpg" height="425" width="640"/>
+    <link rel="stylesheet" href="styles.css">
     <title> My Kitchen</title>
 </head>
+<div>
+<img src="/Users/haleyallick/IdeaProjects/jane-group-a/0 Landing Page.jpg" alt="Spices">
+</div>
+
 <body class="container">
 
 <nav th:replace="fragments :: navigation"></nav>
@@ -17,6 +23,20 @@
         <th>Sides</th>
     </tr>
     </thead>
+    <form>
+        <h2>Add Ingredient</h2>
+        <form action="/ingredient/add">
+            <label for="ingredientName">Add Ingredient:</label><br>
+            <input type="text" id="ingredientName" value=""><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+
+        <p>Notice that the value of the "First name" field will not be submitted, because the input element does not have a name attribute.</p>
+
+
+    </form>
     <th:block th:each="ingredient : ${ingredients}">
         <tr>
             <td th:text="${ingredient.id}"></td>
