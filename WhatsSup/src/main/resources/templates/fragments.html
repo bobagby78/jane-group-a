@@ -7,26 +7,30 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav th:fragment="navigation">
-  <nav class="navbar navbar-expand-lg navbar-light bg-#D15C4A " style="background-color: #d15C4A ">
-<a class="navbar-brand" href="#">WhatsSup</a>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Match Recipes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">My Kitchen</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">My Recipes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Add Recipes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Log Out</a>
-      </li>
-      </li>
-    </ul>
+  <div th:fragment="taco">
+  <img th:src="@{/taco.jpg}">
+  </div>
+  <nav th:fragment="navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-#D15C4A " style="background-color: #d15C4A ">
+  <a class="navbar-brand" href="#">WhatsSup</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Match Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Kitchen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Add Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log Out</a>
+        </li>
+        </li>
+      </ul>
+    </nav>
   </nav>
-</nav>
+</body>

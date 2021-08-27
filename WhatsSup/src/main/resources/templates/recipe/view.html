@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <head th:replace="fragments :: head">
+        <meta charset="UTF-8"/>
+    </head>
+    <title th:text="${title}f">View Recipe</title>
+</head>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<div th:replace="fragments :: taco"></div>
+
+<body class="container">
+    <h1>View Recipe</h1>
+</body>
+</html>
