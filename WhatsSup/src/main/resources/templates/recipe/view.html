@@ -5,7 +5,7 @@
     <head th:replace="fragments :: head">
         <meta charset="UTF-8"/>
     </head>
-    <title th:text="${title}f">View Recipe</title>
+    <title th:text="${title}">Whats Sup - View Recipe</title>
 </head>
 
 <nav th:replace="fragments :: navigation"></nav>
@@ -14,5 +14,35 @@
 
 <body class="container">
     <h1>View Recipe</h1>
+    <table>
+        <thead th:text="${recipe.title}">Title</thead>
+        <tbody>
+            <tr>
+                <td th:text="Author: ${recipe.author}">Author: </td>
+                <td th:text="Number of Servings: ${recipe.numServings}">Number of Servings: </td>
+            </tr>
+            <tr>
+                <td th:text="Prep Time: %{recipe.prepTime}">Prep Time: </td>
+                <td th:text="Total Time: %{recipe.totalTime}">Total Time: </td>
+            </tr>
+        </tbody>
+        <tfoot>
+        <td th:text="Description Details: ${recipe.descriptionDetails}">Description Details: </td>
+        </tfoot>
+    </table>
+    <table>
+        <thead>Ingredients and Amounts</thead>
+        <tbody>
+            <tr th:each="ingredient : ${recipe.ingredients}">Ingredients</tr> <!--Do I need amounts or no? Adjust thead if no-->
+        </tbody>
+    </table>
+    <table>
+        <thead>Step by Step Directions</thead>
+        <tr th:each="step : ${recipe.steps}">
+<!--            need to think on how to iterate through steps and display each step as a new tr, the tr's th text being the next step-->
+<!--            also need to finish looking up whether or not more than one thymeleaf command can be inserted per each element-->
+            <td th:text=""></td>
+        </tr>
+    </table>
 </body>
 </html>
