@@ -27,7 +27,7 @@ public class Recipe extends AbstractEntity{
     private String recipeDescription;
 
     @NotBlank(message="It looks like  you haven't added any ingredients to your recipe")
-    private List<RecipeIngredObj> ingredients;
+    private String ingredients;
 
     @NotBlank(message="It looks like  you haven't added any directions to your recipe")
     private String directions;
@@ -36,7 +36,7 @@ public class Recipe extends AbstractEntity{
 
     public Recipe(){}
 
-    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, List<RecipeIngredObj> ingredients, String directions, String notes) {
+    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, String ingredients, String directions, String notes) {
         this.recipeTitle = recipeTitle;
         this.recipeAuthor = recipeAuthor;
         this.prepTimeMinutes = prepTimeMinutes;
@@ -96,11 +96,11 @@ public class Recipe extends AbstractEntity{
         this.recipeDescription = recipeDescription;
     }
 
-    public List<RecipeIngredObj> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<RecipeIngredObj> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
