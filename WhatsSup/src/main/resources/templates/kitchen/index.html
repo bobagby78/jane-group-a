@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
-    <head th:replace="fragments :: head"></head>
-    <title> My Kitchen</title>
-    <link rel="stylesheet" href="uniform.css">
+    <head th:replace="fragments :: navigation"></head>
+    <link rel="stylesheet" href="">
 </head>
 
 <body class="container">
-
-<nav th:replace="fragments :: navigation"></nav>
+<h2>My Kitchen</h2>
+<img src="../../static/images/spices.jpg" alt="Soup" width="400" height="300">
 
     <form>
         <h2>Add Ingredient</h2>

@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
     <head th:replace="fragments :: head"></head>
-    <title> Add Recipe</title>
-    <link rel="stylesheet" href="uniform.css">
-</head>
+    <header th:replace="fragments :: navigation"></header>
+    <link rel = "stylesheet" th:href="@{/css/recipe.css}" />
 
-<body class="container">
-<nav th:replace="fragments :: navigation"></nav>
+
+    <body class="container">
+
+<img th:src = "@{/images/spices.jpg}" />
+
 <div class="row">
     <div class="col-lg-4">
         <h1>Add a Recipe</h1>
     </div>
     <div class="col-lg-8">
-        <div>
-        <img src="../../../../../../soup.jpg" alt="Soup" height="300" width="400"/>
-            </div>
     </div>
     <div class="row">
         <form id = "add-recipe" method="post">
