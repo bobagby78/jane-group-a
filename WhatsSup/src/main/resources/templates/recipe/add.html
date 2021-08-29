@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
     <head th:replace="fragments :: head"></head>
-    <header th:replace="fragments :: navigation"></header>
-    <link rel = "stylesheet" th:href="@{/css/recipe.css}" />
+    <title> My Kitchen</title>
+</head>
 
-
-    <body class="container">
-
-<img th:src = "@{/images/spices.jpg}" />
-
+<body class="container">
+<nav th:replace="fragments :: navigation"></nav>
 <div class="row">
     <div class="col-lg-4">
         <h1>Add a Recipe</h1>
     </div>
     <div class="col-lg-8">
+        <div class="row"><h3>Put a pretty picture here</h3>
+        </div>
     </div>
+
     <div class="row">
         <form id = "add-recipe" method="post">
 
             <div class="row">
-                <div class="col-lg-2">Title <input th:field="${recipe.recipeTitle}"></div>
+                <div class="col-lg-2">title <input th:field="${recipe.recipeTitle}"></div>
+                <p th:errors="${recipe.recipeTitle}"></p>
                 <div class="col-lg-2">Author <input type="text" th:field="${recipe.recipeAuthor}"></div>
+                <p th:errors="${recipe.recipeAuthor}"></p>
                 <div class="col-lg-2">Prep time <input type="text" th:field="${recipe.prepTimeMinutes}"></div>
+                <p th:errors="${recipe.prepTimeMinutes}"></p>
                 <div class="col-lg-2">Total time <input type="text" th:field="${recipe.totalTimeMinutes}"></div>
+                <p th:errors="${recipe.totalTimeMinutes}"></p>
                 <div class="col-lg-2">Serves <input type="text" th:field="${recipe.numServings}"></div>
+                <p th:errors="${recipe.numServings}"></p>
             </div>
             <div class="row">
                 <div class="col-lg-10">Please provide a brief recipe description:
                     <p><textarea th:field="${recipe.recipeDescription}" cols="146" rows="3"></textarea></p>
+                    <p th:errors="${recipe.recipeDescription}"></p>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-lg-5">Ingredients
                     <p><textarea th:field="${recipe.ingredients}" cols="70" rows="10"></textarea></p>
-                    <ol type="1">
-                    </ol>
-
+                    <p th:errors="${recipe.ingredients}"></p>
                 </div>
 
 <!--                <div class="col-lg-5">-->
@@ -85,6 +90,7 @@
                     <div class="col-lg-5">
                         <p><br>Instructions</p>
                         <textarea th:field="${recipe.directions}" cols="70" rows="10"></textarea>
+                        <p th:errors="${recipe.directions}"></p>
 
                     </div>
                     <div class="col">
