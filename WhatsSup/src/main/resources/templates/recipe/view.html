@@ -63,8 +63,21 @@
     </table>
     <form method="post"><!--don't know where it's gonna submit to-->
         <input type="text" placeholder="Type ingredient here" name="newIngredient" required
-        th:field="${myKitchenIngredientCollection.addOrSomething()}"> <!--look into what jon has done-->
+        th:field="${myKitchenIngredientCollection.addOrSomething()}"> <!--look into what jon has done to find how to add to collection-->
+        <select type="text" name="ingredientCategory" th:field="${ingredient.ingredientCategory}" required>
+            <option value="Category" disabled>Category</option>
+            <option value="Spice" >Spice</option>
+            <option value="Protein" >Protein</option>
+            <option value="Side" >Side</option>
+            <option value="Condiment" >Condiment</option>
+            <option value="Other" >Other</option>
+        </select>
+        <input type="date" name="purchaseDate" th:field="${ingredient.purchaseDate}">
         <button type="submit">Add to My Kitchen!</button>
-    </form>
+    </form>f
 </body>
 </html>
+
+<!--have input for ingredient name      check
+now need select for ingredient category i.e. spice, protein, side, condiment, other.        check
+and input for purchase date             check-->
