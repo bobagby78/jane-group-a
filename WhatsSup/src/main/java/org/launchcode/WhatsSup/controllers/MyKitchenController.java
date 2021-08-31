@@ -59,7 +59,7 @@ public class MyKitchenController {
     @PostMapping
     public String processAddIngredientForm(@ModelAttribute Ingredient newIngredient, Model model){
         addIngredientRepository.save(newIngredient);
-        return "/kitchen/index";
+        return "redirect:/kitchen";
     }
 
 }
