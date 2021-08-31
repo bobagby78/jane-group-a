@@ -7,12 +7,26 @@
     <head th:replace="fragments :: head"></head>
 <!--    <title> My Kitchen</title>-->
 </head>
-<body class="container">
+<style>
+    img {
+        position: absolute;
+        right: 30px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    container {
+
+        
+    }
+
+</style>
+
+<body class="container pt-lg-3">
 
 <nav th:replace="fragments :: navigation"></nav>
 
-
-<div class="container">
+<div class="container p-3 my-3">
+    <h1>My Kitchen</h1>
     <div class="row">
 
         <div class="col-lg-2 border ">
@@ -80,7 +94,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 pt-3">
             <form id="addIngredient" method="post"><p class="font-weight-bold">Add Ingredient</p>
                 <script>
                 let clearForm = ()=>{
@@ -101,11 +115,17 @@
                 <p>Ingredient Category</p>
                 <input id="purchaseDate" type="text" name="purchaseDate" th:field="${ingredient.purchaseDate}">
                 <p>Purchase Date</p>
-                <p><input type="submit" value="add ingredient"></p>
+                <p><input type="submit" value="Add ingredient"></p>
             </form>
-            <p><input onclick="clearForm()" type="submit" value="clear form"></p>
+            <p><input onclick="clearForm()" type="submit" value="Clear form"></p>
 
         </div>
+        <style>
+            body {
+                background-image: url("/images/herbs.jpg");
+            }
+        </style>
+
 
     </div>
 </div>
