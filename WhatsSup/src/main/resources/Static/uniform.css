@@ -1,0 +1,27 @@
+img {
+    border-radius: 8px;
+    margin-right: auto;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+#navbar{
+    width:100px;
+    height:auto;
+}
+
+body{
+    margin:0px;
+}

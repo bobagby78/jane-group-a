@@ -3,43 +3,51 @@
 <head>
     <head th:replace="fragments :: head"></head>
     <title> My Kitchen</title>
+    <link rel="stylesheet" href="uniform.css">
 </head>
+
 <body class="container">
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Spices</th>
-        <th>Meats/Seafoods</th>
-        <th>Condiments</th>
-        <th>Sides</th>
-    </tr>
-    </thead>
-    <th:block th:each="ingredient : ${ingredients}">
-        <tr>
-            <td th:text="${ingredient.id}">ID1</td>
-            <td th:text="${ingredient.name}">Name1</td>
-            <td th:text="${ingredient.category}">Cat1</td>
-            <td th:text="${ingredient.purchaseDate}">Date1</td>
-            <td>
-                <a th:href="@{/ingredients/add/{id}(id=${ingredient.id})}">Add</a>
-            </td>
-            </td>
-        </tr>
-        <tr>
-            <td th:text="${ingredient.id}">ID2</td>
-            <td th:text="${ingredient.name}">Name2</td>
-            <td th:text="${ingredient.category}">Cat2</td>
-            <td th:text="${ingredient.purchaseDate}">Date2</td>
-            <td>
-                <a th:href="@{/ingredients/add/{id}(id=${ingredient.id})}">Add</a>
-            </td>
-            </td>
-        </tr>
-    </th:block>
-</table>
+    <form>
+        <h2>Add Ingredient</h2>
+        <form action="/ingredient/add">
+            <label for="ingredientName">Add Ingredient:</label><br>
+            <input type="text" id="ingredientName" value=""><br><br>
+            <label for="ingredientCategory"> Select Category:</label><br>
+            <select name="Category" id="ingredientCategory">
+                <option value="spices">Spices</option>
+                <option value="meats/seafood">Meats/Seafood</option>
+                <option value="condiments">Condiments</option>
+                <option value="sides">Sides</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
 
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Spices</th>
+                <th>Meats/Seafoods</th>
+                <th>Condiments</th>
+                <th>Sides</th>
+            </tr>
+            </thead>
+        </table>-->
+<!--    <th:block th:each="ingredient : ${ingredients}">-->
+<!--        <tr>-->
+<!--            <td th:text="${ingredient.id}"></td>-->
+<!--            <td th:text="${ingredient.name}"></td>-->
+<!--            <td th:text="${ingredient.category}"></td>-->
+<!--            <td th:text="${ingredient.purchaseDate}"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/ingredients/add/{id}(id=${ingredient.id})}">Add</a>-->
+<!--            </td>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+    </form>
 </body>
 </html>
