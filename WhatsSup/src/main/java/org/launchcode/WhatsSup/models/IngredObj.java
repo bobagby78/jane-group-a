@@ -3,13 +3,13 @@ package org.launchcode.WhatsSup.models;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class RecipeIngredObj {
+public class IngredObj {
     HashMap<Ingredient, MeasurementObj> ingredObj = new HashMap<>();
 
-    public RecipeIngredObj() {
+    public IngredObj() {
     }
 
-    public RecipeIngredObj(HashMap<Ingredient, MeasurementObj> ingredObj) {
+    public IngredObj(HashMap<Ingredient, MeasurementObj> ingredObj) {
         this.ingredObj = ingredObj;
     }
 
@@ -32,7 +32,7 @@ public class RecipeIngredObj {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RecipeIngredObj that = (RecipeIngredObj) o;
+        IngredObj that = (IngredObj) o;
         return Objects.equals(ingredObj, that.ingredObj);
     }
 
