@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <head th:replace="fragments :: head">
+        <meta charset="UTF-8"/>
+    </head>
+    <title th:text="${title}">Whats Sup - View Recipe</title>
+</head>
+
+<nav th:replace="fragments :: navigation"></nav>
+<!--still cannot test this html due to not having a back-end built - no sense spending all that time building a faux back-end to test-->
+<body class="container">
+    <div><!--this div is an attempt to easily keep its inner elements at the same page elevation-->
+        <h1>View Recipe</h1>
+        <div th:replace="fragments :: taco"></div>
+    </div>
+    <table>
+        <thead th:text="${recipe.title}">Title</thead>
+        <tbody>
+            <tr>
+                <td th:text="Author: ${recipe.author}">Author: </td>
+                <td th:text="Number of Servings: ${recipe.numServings}">Number of Servings: </td>
+            </tr>
+            <tr>
+                <td th:text="Prep Time: ${recipe.prepTime}">Prep Time: </td>
+                <td th:text="Total Time: ${recipe.totalTime}">Total Time: </td>
+            </tr>
+        </tbody>
+        <tfoot>
+        <td th:text="Description Details: ${recipe.descriptionDetails}">Description Details: </td>
+        </tfoot>
+    </table>
+    <div><!--this div is an attempt to easily keep its inner elements at the same page elevation-->
+        <table>
+        <thead>Ingredients and Amounts</thead>
+        <tbody>
+            <th:block  th:each="ingredient : ${recipe.ingredients}">
+                <tr>
+                    <td th:text="${ingredient}"></td>
+                </tr> <!--Do I need amounts or no? Adjust thead if no-->
+            </th:block>
+        </tbody>
+    </table>
+    </div>
+    <table>
+        <thead>Step by Step Directions</thead>
+        <tr>
+            <td>
+                <ol>
+                    <li th:each="step : ${recipe.steps}" th:text="${step}">Steps in Order</li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <thead>Additional Notes for This Recipe: </thead>
+        <tr>
+            <td>
+                <li th:each="note : ${recipe.notes}" th:text="${note}"></li>
+            </td>
+        </tr>
+    </table>
+    <form method="post"><!--don't know where it's gonna submit to-->
+        <input type="text" placeholder="Type ingredient here" name="newIngredient" required
+        th:field="${myKitchenIngredientCollection.addOrSomething()}"> <!--look into what jon has done to find how to add to collection-->
+        <select type="text" name="ingredientCategory" th:field="${ingredient.ingredientCategory}" required>
+            <option value="Category" disabled>Category</option>
+            <option value="Spice" >Spice</option>
+            <option value="Protein" >Protein</option>
+            <option value="Side" >Side</option>
+            <option value="Condiment" >Condiment</option>
+            <option value="Other" >Other</option>
+        </select>
+        <input type="date" name="purchaseDate" th:field="${ingredient.purchaseDate}">
+        <button type="submit">Add to My Kitchen!</button>
+    </form>f
+</body>
+</html>
+
+<!--have input for ingredient name      check
+now need select for ingredient category i.e. spice, protein, side, condiment, other.        check
+and input for purchase date             check-->
