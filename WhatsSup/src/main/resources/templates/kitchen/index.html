@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<meta charset="utf-8">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <head th:replace="fragments :: head"></head>
+    <!--    <title> Matched Recipes</title>-->
+</head>
+<style>
+    img{
+        padding-left: 30px;
+    }
+    container-fluid {
+        position: center;
+        border: indianred;
+        border-width: medium;
+        font-weight: bold;
+        font-family-sans-serif: normal;
+
+    }
+    h1 { color:indianred;
+        align-content: center;
+    }
+    body, html {
+        marginleft:30px;
+        margin-right:30px;
+        margin-bottom:30px;
+    }
+    row {
+        marginleft:80px;
+        margin-right:30px;
+        border: 1px indianred;
+    }
+
+    .img-thumbnail {
+        border: 1px indianred;
+        padding-inline: initial;
+    }
+    .col-sm-8 {
+        border-width: thick;
+        border-color: #d15C4A;
+    }
+    div{
+        border-color: #d15C4A;
+        border-width: medium;
+        border-spacing: 10px;
+        padding-left: 30px;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-bottom: 30px;
+    }
+</style>
+
+<body class="container-fluid pt-lg-3 font-weight-bold" >
+<nav th:replace="fragments :: navigation"></nav>
+<div>
+<h1 class="display-3">Matched Recipes</h1>
+</div>
+
+<div class="row">
+    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>
+    <div class="col-sm-8" >Recipe Name & Description</div>
+</div>
+
+<div class="row">
+    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>
+    <div class="col-sm-8">Recipe Name & Description</div>
+</div>
+<div class="row">
+    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>
+    <div class="col-sm-8">Recipe Name & Description</div>
+</div>
+<div class="row">
+    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>
+    <div class="col-sm-8">Recipe Name & Description</div>
+</div>
+
+</body>
