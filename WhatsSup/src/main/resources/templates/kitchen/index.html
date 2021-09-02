@@ -19,33 +19,44 @@
         border: indianred;
         font-weight: bold;
         font-family-sans-serif: normal;
+        font-max-size: xx-large;
         
     }
     h1 { color:indianred;
         font-size: xxx-large;
         align-content: baseline;
+        font-weight: bold;
     }
 
     body, html {
-        marginleft:30px;
-        margin-right:30px;
+        marginleft:80-px;
+        margin-right:80px;
         margin-bottom:30px;
+        font-weight: bold;
+        font-family-sans-serif: normal;
+        font-max-size: xx-large;
     }
     row {
         marginleft:80px;
         margin-right:30px;
+        padding-right: 30px;
+        padding-left:30px;
+        padding-top:30px;
+        padding-bottom:30px;
+        font-family-sans-serif: normal;
+        font-max-size: xx-large;
     }
 
 
 
 </style>
 
-<body class="container-fluid pt-lg-3 font-weight-bold" >
+<body class="container-fluid pt-lg-3" >
 
 <nav th:replace="fragments :: navigation"></nav>
 
 <div class="container-fluid p-3 my-3 font-weight-bold">
-    <h1>My Kitchen</h1>
+    <h1 class="display-2">My Kitchen </h1>
     <div class="row">
 
         <div class="col-lg-2 border ">
