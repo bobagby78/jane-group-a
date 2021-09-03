@@ -11,13 +11,14 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("recipe")
-public class AddRecipeController {
+public class AddRecipeController { //refactor to just be RecipeController
 
     @Autowired
-    private AddRecipeRepository addRecipeRepository;
+    private AddRecipeRepository addRecipeRepository; //refactor to just RecipeRepository
 
     @GetMapping("/add")
     public String displayAddRecipeForm(Model model){
@@ -40,6 +41,18 @@ public class AddRecipeController {
         }
         addRecipeRepository.save(newRecipe);
         return "redirect:../"; //refactor to return "view-my-recipes" when complete
+    }
+
+    @GetMapping("/view/{recipeId}")
+    public String displayRecipe(Model model, @PathVariable int recipeId){
+
+        Optional optRecipe = addRecipeRepository.findById(recipeId);
+        if (optRecipe.isPresent()){
+            Recipe recipe = (Recipe) optRecipe.get();
+            model.addAttribute("recipe", recipe);
+        }
+
+        return"/recipe/view"; //optional, follow model from jobs with jobID as req param.
     }
 
 }
