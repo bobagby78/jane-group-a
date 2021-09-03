@@ -20,6 +20,7 @@
         font-weight: bold;
         font-family-sans-serif: normal;
         font-max-size: xx-large;
+        align-content: center;
         
     }
     h1 { color:indianred;
@@ -29,12 +30,14 @@
     }
 
     body, html {
-        marginleft:80-px;
-        margin-right:80px;
-        margin-bottom:30px;
+        padding-bottom:20px;
+        padding-top:20px;
+        padding-left:20px;
+        padding-right:20px;
         font-weight: bold;
         font-family-sans-serif: normal;
         font-max-size: xx-large;
+        align-content: center;
     }
     row {
         marginleft:80px;
@@ -45,9 +48,18 @@
         padding-bottom:30px;
         font-family-sans-serif: normal;
         font-max-size: xx-large;
+        align-content: center;
     }
+     label {
+        padding-top: 10px;
+         padding-bottom: 10px;
+         padding-left: 10px;
+         padding-top: 10px;
+         font-size: large;
+         font-weight: bold;
+         align-content: center;
 
-
+    }
 
 </style>
 
@@ -59,10 +71,10 @@
     <h1 class="display-2">My Kitchen </h1>
     <div class="row">
 
-        <div class="col-lg-2 border ">
-            <p class="font-weight-bold">Spices</p>
+        <div class="col-lg-2 border font-weight-bold bg-white">
+            <label class="font-weight-bold">Spices</label>
             <div class="row">
-                <div class="col border">
+                <div class="col border bg-white">
                     <ul>
                         <li th:each="spice : ${spices}">
                             <p th:text="${spice.ingredientName}">spice name</p>
@@ -72,10 +84,10 @@
             </div>
         </div>
 
-        <div class="col-lg-2 border">
-            <p class="font-weight-bold">Proteins</p>
+        <div class="col-lg-2 border bg-white">
+            <label class="font-weight-bold">Proteins</label>
             <div class="row" >
-                <div class="col border">
+                <div class="col border bg-white">
                     <ul>
                         <li th:each="protein : ${proteins}">
                             <p th:text="${protein.ingredientName}">protein name</p>
@@ -85,10 +97,10 @@
             </div>
         </div>
 
-        <div class="col-lg-2 border">
-            <p class="font-weight-bold">Sides</p>
+        <div class="col-lg-2 border bg-white">
+            <label class="font-weight-bold">Sides</label>
             <div class="row" >
-                <div class="col border">
+                <div class="col border bg-white">
                     <ul>
                         <li th:each="side : ${sides}">
                             <p th:text="${side.ingredientName}">side name</p>
@@ -98,10 +110,10 @@
             </div>
         </div>
 
-        <div class="col-lg-2 border">
-            <p class="font-weight-bold">Condiments</p>
+        <div class="col-lg-2 border bg-white">
+            <label class="font-weight-bold">Condiments</label>
             <div class="row" >
-                <div class="col border">
+                <div class="col border bg-white">
                     <ul>
                         <li th:each="condiment : ${condiments}">
                             <p th:text="${condiment.ingredientName}">condiment name</p>
@@ -111,10 +123,10 @@
             </div>
         </div>
 
-        <div class="col-lg-2 border">
-            <p class="font-weight-bold">Other</p>
+        <div class="col-lg-2 border bg-white">
+            <label class="font-weight-bold bg-white">Other</label>
             <div class="row" >
-                <div class="col border">
+                <div class="col border bg-white">
                     <ul>
                         <li th:each="other : ${other}">
                             <p th:text="${other.ingredientName}">other name</p>
@@ -125,7 +137,7 @@
         </div>
 
         <div class="col-lg-4 pt-3">
-            <form id="addIngredient" method="post"><p class="font-weight-bold">Add Ingredient</p>
+            <form id="addIngredient" method="post"><p class="font-weight-bold display-6" >Add Ingredient</p>
                 <script>
                 let clearForm = ()=>{
                     document.getElementById('ingredientName').value='';
@@ -133,8 +145,12 @@
                         document.getElementById('purchaseDate').value='';
                     }
                 </script>
+
+                <label class="bg-light">Ingredient Name: </label>
                 <input id="ingredientName" name="ingredientName" th:field="${ingredient.ingredientName}">
-                <p>Ingredient Name</p>
+
+
+                <label class="bg-light">Ingredient Category: </label>
                 <select id="ingredientCategory" type="text" name="ingredientCategory" th:field="${ingredient.ingredientCategory}">
                     <option value="spice">Spice</option>
                     <option value="protein">Protein</option>
@@ -142,12 +158,14 @@
                     <option value="condiment">Condiment</option>
                     <option value="other">Other</option>
                 </select>
-                <p>Ingredient Category</p>
+<div>
+                <label class="bg-light"> Purchase Date: </label>
                 <input id="purchaseDate" type="text" name="purchaseDate" th:field="${ingredient.purchaseDate}">
-                <p>Purchase Date</p>
-                <p><input type="submit" value="Add ingredient"></p>
+</div>
+
+                <p><input type="button" class="btn btn-success" value="Add ingredient"></p>
             </form>
-            <p><input onclick="clearForm()" type="submit" value="Clear form"></p>
+            <p><input onclick="clearForm()" type="button" class="btn btn-success" value="Clear form"></p>
 
         </div>
         <style>
