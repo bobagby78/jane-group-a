@@ -1,62 +1,115 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
-    <head th:replace="fragments :: head"></head>
-    <link rel="stylesheet" href="styles.css">
-    <title> My Kitchen</title>
-</head>
-<div>
-<img src="/Users/haleyallick/IdeaProjects/jane-group-a/0 Landing Page.jpg" alt="Spices">
-</div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
 
+    <head th:replace="fragments :: head"></head>
+<!--    <title> My Kitchen</title>-->
+</head>
 <body class="container">
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Spices</th>
-        <th>Meats/Seafoods</th>
-        <th>Condiments</th>
-        <th>Sides</th>
-    </tr>
-    </thead>
-    <form>
-        <h2>Add Ingredient</h2>
-        <form action="/ingredient/add">
-            <label for="ingredientName">Add Ingredient:</label><br>
-            <input type="text" id="ingredientName" value=""><br><br>
-            <label for="ingredientCategory"> Select Category:</label><br>
-            <select name="Category" id="ingredientCategory">
-                <option value="spices">Spices</option>
-                <option value="meats/seafood">Meats/Seafood</option>
-                <option value="condiments">Condiments</option>
-                <option value="sides">Sides</option>
-            </select>
-            <input type="submit" value="Submit">
-        </form>
 
+<div class="container">
+    <div class="row">
 
-        <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+        <div class="col-lg-2 border ">
+            <p class="font-weight-bold">Spices</p>
+            <div class="row">
+                <div class="col border">
+                    <ul>
+                        <li th:each="spice : ${spices}">
+                            <p th:text="${spice.ingredientName}">spice name</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        <p>Notice that the value of the "First name" field will not be submitted, because the input element does not have a name attribute.</p>
+        <div class="col-lg-2 border">
+            <p class="font-weight-bold">Proteins</p>
+            <div class="row" >
+                <div class="col border">
+                    <ul>
+                        <li th:each="protein : ${proteins}">
+                            <p th:text="${protein.ingredientName}">protein name</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
+        <div class="col-lg-2 border">
+            <p class="font-weight-bold">Sides</p>
+            <div class="row" >
+                <div class="col border">
+                    <ul>
+                        <li th:each="side : ${sides}">
+                            <p th:text="${side.ingredientName}">side name</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-    </form>
-    <th:block th:each="ingredient : ${ingredients}">
-        <tr>
-            <td th:text="${ingredient.id}"></td>
-            <td th:text="${ingredient.name}"></td>
-            <td th:text="${ingredient.category}"></td>
-            <td th:text="${ingredient.purchaseDate}"></td>
-            <td>
-                <a th:href="@{/ingredients/add/{id}(id=${ingredient.id})}">Add</a>
-            </td>
-            </td>
-        </tr>
-    </th:block>
-</table>
+        <div class="col-lg-2 border">
+            <p class="font-weight-bold">Condiments</p>
+            <div class="row" >
+                <div class="col border">
+                    <ul>
+                        <li th:each="condiment : ${condiments}">
+                            <p th:text="${condiment.ingredientName}">condiment name</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 border">
+            <p class="font-weight-bold">Other</p>
+            <div class="row" >
+                <div class="col border">
+                    <ul>
+                        <li th:each="other : ${other}">
+                            <p th:text="${other.ingredientName}">other name</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <form id="addIngredient" method="post"><p class="font-weight-bold">Add Ingredient</p>
+                <script>
+                let clearForm = ()=>{
+                    document.getElementById('ingredientName').value='';
+                    document.getElementById('ingredientCategory').value='';
+                        document.getElementById('purchaseDate').value='';
+                    }
+                </script>
+                <input id="ingredientName" name="ingredientName" th:field="${ingredient.ingredientName}">
+                <p>Ingredient Name</p>
+                <select id="ingredientCategory" type="text" name="ingredientCategory" th:field="${ingredient.ingredientCategory}">
+                    <option value="spice">Spice</option>
+                    <option value="protein">Protein</option>
+                    <option value="side">Side</option>
+                    <option value="condiment">Condiment</option>
+                    <option value="other">Other</option>
+                </select>
+                <p>Ingredient Category</p>
+                <input id="purchaseDate" type="text" name="purchaseDate" th:field="${ingredient.purchaseDate}">
+                <p>Purchase Date</p>
+                <p><input type="submit" value="add ingredient"></p>
+            </form>
+            <p><input onclick="clearForm()" type="submit" value="clear form"></p>
+
+        </div>
+
+    </div>
+</div>
+
 
 </body>
 </html>

@@ -16,19 +16,19 @@
         <div th:replace="fragments :: taco"></div>
     </div>
     <table>
-        <thead th:text="${recipe.title}">Title</thead>
+        <thead th:text="'Title: ' + ${recipe.recipeTitle}">Title</thead>
         <tbody>
             <tr>
-                <td th:text="Author: ${recipe.author}">Author: </td>
-                <td th:text="Number of Servings: ${recipe.numServings}">Number of Servings: </td>
+                <td th:text="'Author: ' + ${recipe.recipeAuthor}">Author: </td>
+                <td th:text="'Serves: ' + ${recipe.numServings}">Number of Servings: </td>
             </tr>
             <tr>
-                <td th:text="Prep Time: ${recipe.prepTime}">Prep Time: </td>
-                <td th:text="Total Time: ${recipe.totalTime}">Total Time: </td>
+                <td th:text="'Prep time: ' + ${recipe.prepTimeMinutes}">Prep Time: </td>
+                <td th:text="'Total time: ' + ${recipe.totalTimeMinutes}">Total Time: </td>
             </tr>
         </tbody>
         <tfoot>
-        <td th:text="Description Details: ${recipe.descriptionDetails}">Description Details: </td>
+        <td th:text="${'Description: ' + recipe.recipeDescription}">Description Details: </td>
         </tfoot>
     </table>
     <div><!--this div is an attempt to easily keep its inner elements at the same page elevation-->
@@ -48,7 +48,7 @@
         <tr>
             <td>
                 <ol>
-                    <li th:each="step : ${recipe.steps}" th:text="${step}">Steps in Order</li>
+                    <li th:each="step : ${recipe.directions}" th:text="${step}">Steps in Order</li>
                 </ol>
             </td>
         </tr>
@@ -61,20 +61,21 @@
             </td>
         </tr>
     </table>
-    <form method="post"><!--don't know where it's gonna submit to-->
-        <input type="text" placeholder="Type ingredient here" name="newIngredient" required
-        th:field="${myKitchenIngredientCollection.addOrSomething()}"> <!--look into what jon has done to find how to add to collection-->
-        <select type="text" name="ingredientCategory" th:field="${ingredient.ingredientCategory}" required>
-            <option value="Category" disabled>Category</option>
-            <option value="Spice" >Spice</option>
-            <option value="Protein" >Protein</option>
-            <option value="Side" >Side</option>
-            <option value="Condiment" >Condiment</option>
-            <option value="Other" >Other</option>
-        </select>
-        <input type="date" name="purchaseDate" th:field="${ingredient.purchaseDate}">
-        <button type="submit" class="btn btn-primary">Add to My Kitchen!</button>
-    </form>
+    <!--<form method="post">don't know where it's gonna submit to-->
+<!--        <input type="text" placeholder="Type ingredient here" name="newIngredient" required-->
+        <!--        th:field="${myKitchenIngredientCollection.addOrSomething()}"> look into what jon has done to find how to add to collection-->
+<!--        <select type="text" name="ingredientCategory" th:field="${ingredient.ingredientCategory}" required>-->
+<!--            <option value="Category" disabled>Category</option>-->
+<!--            <option value="Spice" >Spice</option>-->
+<!--            <option value="Protein" >Protein</option>-->
+<!--            <option value="Side" >Side</option>-->
+<!--            <option value="Condiment" >Condiment</option>-->
+<!--            <option value="Other" >Other</option>-->
+<!--        </select>-->
+<!--        <input type="date" name="purchaseDate" th:field="${ingredient.purchaseDate}">-->
+<!--        <button type="submit" class="btn btn-primary">Add to My Kitchen!</button>-->
+<!--    </form>-->
+
 </body>
 </html>
 
