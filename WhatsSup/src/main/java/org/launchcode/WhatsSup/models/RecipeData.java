@@ -8,7 +8,7 @@ public class RecipeData extends AbstractEntity{
 
         ArrayList<Recipe> results = new ArrayList<>();
 
-        if (value.toLowerCase().equals("all")){
+        if (value.equalsIgnoreCase("all")){
             return (ArrayList<Recipe>) allRecipes;
         }
 
