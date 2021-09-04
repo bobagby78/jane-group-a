@@ -49,7 +49,9 @@ public class AddRecipeController { //refactor to just be RecipeController
         Optional optRecipe = addRecipeRepository.findById(recipeId);
         if (optRecipe.isPresent()){
             Recipe recipe = (Recipe) optRecipe.get();
+            model.addAttribute("title", "View Recipe");
             model.addAttribute("recipe", recipe);
+
         }
 
         return"/recipe/view"; //optional, follow model from jobs with jobID as req param.
