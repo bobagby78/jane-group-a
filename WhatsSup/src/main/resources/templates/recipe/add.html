@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
     <head th:replace="fragments :: head"></head>
-    <title> Add Recipe</title>
-    <link rel="stylesheet" href="uniform.css">
-</head>
+    <header th:replace="fragments :: navigation"></header>
+    <link rel = "stylesheet" th:href="@{/css/styles.css}" />
 
-<body class="container">
-<nav th:replace="fragments :: navigation"></nav>
+
+    <style>
+        img {
+            position: absolute;
+            right: 30px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+
+
+    <body class="container">
+
+
+
 <div class="row">
     <div class="col-lg-4">
         <h1>Add a Recipe</h1>
     </div>
     <div class="col-lg-8">
-        <div>
-        <img src="../../../../../../soup.jpg" alt="Soup" height="300" width="400"/>
-            </div>
     </div>
     <div class="row">
         <form id = "add-recipe" method="post">
@@ -28,12 +36,11 @@
                 <div class="col-lg-2">Serves <input type="text" th:field="${recipe.numServings}"></div>
             </div>
             <div class="row">
-                <div class="col-lg-10">Please provide a brief recipe description:
-                    <p><textarea th:field="${recipe.recipeDescription}" cols="146" rows="3"></textarea></p>
+                <div class="col-lg-5">Please provide a brief recipe description:
+                    <p><textarea th:field="${recipe.recipeDescription}" cols="100" rows="3"></textarea></p>
                 </div>
             </div>
             <div class="row">
-
                 <div class="col-lg-5">Ingredients
                     <p><textarea th:field="${recipe.ingredients}" cols="70" rows="10"></textarea></p>
                     <ol type="1">
