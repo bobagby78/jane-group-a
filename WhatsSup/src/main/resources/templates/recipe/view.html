@@ -11,7 +11,7 @@
 <nav th:replace="fragments :: navigation"></nav>
 <!--still cannot test this html due to not having a back-end built - no sense spending all that time building a faux back-end to test-->
 <body class="container">
-    <div><!--this div is an attempt to easily keep its inner elements at the same page elevation-->
+    <div class="container d-flex text-center justify-content-between"><!--this div is an attempt to easily keep its inner elements at the same page elevation-->
         <h1>View Recipe</h1>
         <div th:replace="fragments :: taco"></div>
     </div>
