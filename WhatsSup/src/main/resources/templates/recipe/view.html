@@ -26,7 +26,7 @@
     </div>
     <section class="container bg-warning w-50">
         <div class="row text-center">
-            <h2 class="col border-bottom border-dark" th:text="'Title: ' + ${recipe.recipeTitle}">Recipe Title</h2>
+            <h2 class="col border-bottom border-dark" th:text="${recipe.recipeTitle}">Recipe Title</h2>
         </div>
         <div class="row">
             <div class="col">
@@ -51,14 +51,14 @@
         </div>
     </section>
 <!--    this is where i need the grouping to start-->
-    <div class="row align-items-center justify-content-between">
-            <div class="col">
-            <section class="container bg-warning w-50 mt-3">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col bg-warning w-50 mt-3">
                 <div class="row text-center">
                     <h2 class="col border-bottom border-dark">Ingredients & amounts</h2>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col">
                         <ul>
                             <li th:each="ingredient : ${recipe.ingredients}"
                                 th:text="${ingredient}" class="h5">
@@ -66,101 +66,65 @@
                         </ul>
                     </div>
                 </div>
-            </section>
-        </div>
-        <div class="col">
-            <section class="container bg-warning w-50 mt-3">
-                <div class="row text-center">
-                    <h2 class="col border-bottom border-dark">Step-by-Step Directions</h2>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <ol>
-                            <li th:each="direction : ${recipe.directions}"
-                                th:text="${direction}" class="h5">
-                            </li>
-                        </ol>
+            </div>
+            <div class="container col bg-warning w-50 mt-3 ml-3">
+                    <div class="row text-center">
+                        <h2 class="col w-50 border-bottom border-dark">Step-by-Step Directions</h2>
                     </div>
-                </div>
-            </section>
+                    <div class="row">
+                        <div class="col">
+                            <ol>
+                                <li th:each="direction : ${recipe.directions}"
+                                    th:text="${direction}" class="h5">
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-warning mt-3">
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="border-bottom border-dark" th:text="'Notes from '+ ${recipe.recipeAuthor}">Notes from the Author: </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mx-4">
+                <h5 th:text="${recipe.notes}">There are no notes from the author for this recipe.</h5>
+            </div>
         </div>
     </div>
 <!--    this is where I need the grouping to end-->
 
-<!--    <section class="container bg-warning">-->
-<!--        <table class="text-center">-->
-<!--            <thead class="text-center" th:text="'Title: ' + ${recipe.recipeTitle}">Title</thead>-->
-<!--            <tbody>-->
-<!--                <tr>-->
-<!--                    <td class="text-center" th:text="'Author: ' + ${recipe.recipeAuthor}">Author: </td>-->
-<!--                    <td class="text-center" th:text="'Serves: ' + ${recipe.numServings}">Number of Servings: </td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td th:text="'Prep time: ' + ${recipe.prepTimeMinutes}">Prep Time: </td>-->
-<!--                    <td th:text="'Total time: ' + ${recipe.totalTimeMinutes}">Total Time: </td>-->
-<!--                </tr>-->
-<!--            </tbody>-->
-<!--            <tfoot>-->
-<!--            <td th:text="${'Description: ' + recipe.recipeDescription}">Description Details: </td>-->
-<!--            </tfoot>-->
-<!--        </table>-->
-<!--    </section>-->
-<!--    <div>-->
-<!--        <section class="container bg-warning">-->
-<!--            <table>-->
-<!--            <thead>Ingredients and Amounts</thead>-->
-<!--            <tbody>-->
-<!--                <th:block  th:each="ingredient : ${recipe.ingredients}">-->
-<!--                    <tr>-->
-<!--                        <td th:text="${ingredient}"></td>   below is caps lock so i don't forget-->
-<!--                    </tr>                   DO WE NEED AMOUNTS OR NO?-->
-<!--                </th:block>-->
-<!--            </tbody>-->
-<!--            </table>-->
-<!--        </section>-->
-<!--    </div>-->
-<!--    <section class="container bg-warning">-->
-<!--        <table>-->
-<!--            <thead>Step by Step Directions</thead>-->
-<!--            <tr>-->
-<!--                <td>-->
-<!--                    <ol>-->
-<!--                        <li th:each="step : ${recipe.directions}" th:text="${step}">Steps in Order</li>-->
-<!--                    </ol>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--    </section>-->
-<!--    <section class="container bg-warning">-->
-<!--        <table>-->
-<!--            <thead>Additional Notes for This Recipe: </thead>-->
-<!--            <tr>-->
-<!--                <td>-->
-<!--                    <li th:each="note : ${recipe.notes}" th:text="${note}"></li>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--    </section>-->
-    <!--<form method="post">don't know where it's gonna submit to-->
-<!--        <input type="text" placeholder="Type ingredient here" name="newIngredient" required-->
-        <!--        th:field="${myKitchenIngredientCollection.addOrSomething()}"> look into what jon has done to find how to add to collection-->
-<!--        <select type="text" name="ingredientCategory" th:field="${ingredient.ingredientCategory}" required>-->
-<!--            <option value="Category" disabled>Category</option>-->
-<!--            <option value="Spice" >Spice</option>-->
-<!--            <option value="Protein" >Protein</option>-->
-<!--            <option value="Side" >Side</option>-->
-<!--            <option value="Condiment" >Condiment</option>-->
-<!--            <option value="Other" >Other</option>-->
-<!--        </select>-->
-<!--        <input type="date" name="purchaseDate" th:field="${ingredient.purchaseDate}">-->
-<!--        <button type="submit" class="btn btn-primary">Add to My Kitchen!</button>-->
-<!--    </form>-->
+    <form method="post" class="container"> <!--don't know where it's gonna submit to-->
+        <div class="row pt-3">
+            <div class="col">
+                <input type="text" class="form-control w-50" placeholder="Type ingredient here"
+                       name="newIngredient" required
+                        >
+                <!--^^ look into what jon has done to find how to add to collection ^^-->
+            </div>
+            <div class="col">
+                <select type="text" name="ingredientCategory" required>
+                    <option value="none" disabled selected="selected">Category</option>
+                    <option value="Spice">Spice</option>
+                    <option value="Protein">Protein</option>
+                    <option value="Side">Side</option>
+                    <option value="Condiment">Condiment</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="date" name="purchaseDate">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success">Add to My Kitchen!</button>
+            </div>
+        </div>
+    </form>
 
 </body>
 </html>
 
-<!--have input for ingredient name      check
-now need select for ingredient category i.e. spice, protein, side, condiment, other.        check
-and input for purchase date             check-->
 <!--https://getbootstrap.com/docs/4.4/components/forms/ for bootstrap that Haley already looked up-->
-<!--still need a background image for this page-->
