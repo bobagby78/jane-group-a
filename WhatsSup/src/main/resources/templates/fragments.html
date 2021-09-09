@@ -6,27 +6,46 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
+<style>
+  nav{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+</style>
 <body>
 <nav th:fragment="navigation">
-  <nav class="navbar navbar-expand-lg navbar-light bg-#D15C4A " style="background-color: #d15C4A ">
-<a class="navbar-brand" href="#">WhatsSup</a>
-    <ul class="navbar-nav mr-auto">
+  <nav class="navbar navbar-expand-xl navbar-light bg-#D15C4A" style="background-color: #d15C4A">
+<a class="navbar-brand" href="#WhatsSup">WhatsSup</a>
+    <ul class="navbar-nav mr-auto" id="navbar">
       <li class="nav-item">
-        <a class="nav-link" href="#">Match Recipes</a>
+        <a class="nav-link" href="#matchrecipes">Match Recipes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">My Kitchen</a>
+        <a class="nav-link" href="#kitchen">My Kitchen</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">My Recipes</a>
+        <a class="nav-link" href="#myrecipes">My Recipes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Add Recipes</a>
+        <a class="nav-link" href="#addrecipes">Add Recipes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Log Out</a>
+        <a class="nav-link" href="#logout">Log Out</a>
       </li>
       </li>
     </ul>
   </nav>
 </nav>
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--  <style>-->
+<!--   -->
+
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
