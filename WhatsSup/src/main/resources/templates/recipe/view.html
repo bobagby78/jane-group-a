@@ -16,6 +16,11 @@
         background-attachment: fixed;
         background-size: cover;
         }
+    body::before {
+        display: block;
+        content: '';
+        height: 60px;
+}
 </style>
 <body>
     <div class="container">
@@ -98,8 +103,8 @@
 <!--    this is where I need the grouping to end-->
 
     <form method="post" class="container"> <!--don't know where it's gonna submit to-->
-        <div class="row pt-3">
-            <div class="col">
+        <div class="form-row pt-3">
+            <div class="col-7">
                 <input type="text" class="form-control w-50" placeholder="Type ingredient here"
                        name="newIngredient" required
                         >
