@@ -24,17 +24,12 @@ public class AddRecipeController { //refactor to just be RecipeController
     public String displayAddRecipeForm(Model model){
         model.addAttribute("title", "Add Recipe");
         model.addAttribute(new Recipe());
-//        model.addAttribute(new IngredObj());
-//        model.addAttribute(new MeasurementObj());
         return"/recipe/add";
     }
 
     @PostMapping("/add")
     public String processAddRecipeForm(@ModelAttribute @Valid
                                                    Recipe newRecipe,
-//                                                   IngredObj newIngredObj,
-//                                                   MeasurementObj newMeasurementObj,
-//                                                   //Model model,
                                                    Errors errors){
         if(errors.hasErrors()){
             return "/recipe/add";
