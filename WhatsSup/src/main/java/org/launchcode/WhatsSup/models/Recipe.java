@@ -44,7 +44,7 @@ public class Recipe extends AbstractEntity{
         this.totalTimeMinutes = totalTimeMinutes;
         this.numServings = numServings;
         this.recipeDescription = recipeDescription;
-        this.ingredients = ingredients;//Cha
+        this.ingredients = ingredients;
         this.directions = directions;
         this.notes = notes;
     }
