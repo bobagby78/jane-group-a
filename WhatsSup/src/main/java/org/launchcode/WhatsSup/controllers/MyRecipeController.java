@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 @RestController
-
 @Controller
 @RequestMapping("/myrecipes")
 public class MyRecipeController {
@@ -22,14 +21,26 @@ public class MyRecipeController {
         this.recipeRepository = recipeRepository;
   }
 
+    public static void findByRecipeAuthor() {
+    }
+
+
     @GetMapping("/myrecipes")
     public List<Recipe> findByRecipeAuthor(@PathVariable("recipe_author") String recipeAuthor) {
         return this.recipeRepository.findByRecipeAuthor(recipeAuthor);
 	}
+//
+//    @GetMapping("/myrecipes")
+//    public List<Recipe> findByRecipesByAuthor(@PathVariable("recipe_author") String recipeAuthor) {
+//        if (findByRecipesByAuthor.nonNull(recipeAuthor)) {
+//            return this.recipeRepository.findByRecipesByAuthor(recipeAuthor);
+//
+//    }
+//        return this.recipeRepository.findByRecipesByAuthor(recipeAuthor);
+//    }
 
     @GetMapping("/byIngredients")
     public List<Recipe> findByIngredients(@PathVariable("ingredients") String ingredients) {
         return this.recipeRepository.findByIngredients(ingredients);
     }
 }
-
