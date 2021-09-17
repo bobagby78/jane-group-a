@@ -27,6 +27,7 @@ public class AddRecipeController { //refactor to just be RecipeController
     @GetMapping("/add")
     public String displayAddRecipeForm(Model model){
         model.addAttribute("title", "Add Recipe");
+//        String currentUser = (String);
         model.addAttribute(new Recipe());
         return"/recipe/add";
     }
