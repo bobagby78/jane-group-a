@@ -86,7 +86,7 @@ button:hover {
 </nav>
 <body class="container">
 
-<!--<header th:replace="fragments :: navigation"></header>-->
+<header th:replace="fragments :: navigation"></header>
 
 <div class="container">
   <div class="d-flex text-center justify-content-between mx-5">
@@ -101,7 +101,7 @@ button:hover {
         <h3 class="col ml-5 pl-5">Already have an account? <a href="/login">Login </a></h3>
       </div>
     </div>
-    <form action="post">
+<form method="post">
       <div class="form-group">
         <label class="lead font-weight-bold">Username
           <input type="text" th:field="${registerFormDTO.username}" class="form-control" autofocus>
@@ -123,7 +123,7 @@ button:hover {
         <button type="submit" class="signupbtn" value="Register">Sign Up</button>
       </div>
 
-  <!--instead of cancel, already have an account? (below it) sign in-->
+  instead of cancel, already have an account? (below it) sign in
     </form>
   </div>
 

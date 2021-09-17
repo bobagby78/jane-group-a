@@ -8,6 +8,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+
 @ExtendWith(MockitoExtension.class)
 class MyRecipeControllerTest {
 
@@ -19,8 +22,7 @@ class MyRecipeControllerTest {
 
     @Test
     void findByRecipeAuthor() {
-        Recipe recipe1 = new Recipe("Peanutbutter and Jelly", "Jake", 5, 10, 1, "A sandwich!", null, null, "Enjoy!");
-
+        MyRecipeController.findByRecipeAuthor();
     }
 
     @Test
@@ -29,7 +31,7 @@ class MyRecipeControllerTest {
 }
 
 
-
+//
 //    @Test
 //    public void onlyBracketsReturnsTrue() {
 //        assertTrue(BalancedBrackets.hasBalancedBrackets("[]"));
