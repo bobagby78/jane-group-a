@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <style>
+body::before {
+    display: block;
+    content: '';
+    height: 60px;
+}
 body {font-family: Arial, Helvetica, sans-serif;
   background: no-repeat url("https://media.npr.org/assets/img/2016/12/20/food4.gif");
   background-size: cover;}
@@ -56,9 +61,9 @@ button:hover {
 }
 
 /* Add padding to container elements */
-.container {
-  padding: 16px;
-}
+<!--.container {-->
+<!--  padding: 16px;-->
+<!--}-->
 
 /* Clear floats */
 .clearfix::after {
@@ -76,37 +81,51 @@ button:hover {
 </style>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
+<div th:replace="fragments :: unauthenticated-user-navbar"></div>
 <body class="container">
 
 <!--<header th:replace="fragments :: navigation"></header>-->
 
-<form method="post">
-  <h1>Sign Up</h1>
-  <p>Please fill in this form to create an account.</p>
-  <hr>
-  <div class="form-group">
-    <label>Username
-      <input class="form-control" th:field="${registerFormDTO.username}" type="text"/>
-    </label>
-    <p class="error" th:errors="${registerFormDTO.username}"></p>
-  </div>
-  <div class="form-group">
-    <label>Password
-      <input class="form-control" th:field="${registerFormDTO.password}" type="password" />
-    </label>
-    <p class="error" th:errors="${registerFormDTO.password}"></p>
-  </div>
-  <div class="form-group">
-    <label>Verify Password
-      <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
-    </label>
+<div class="container">
+  <div class="d-flex text-center justify-content-between mx-5">
+    <div class="d-flex flex-column">
+      <div class="row w-100">
+        <h1 class="col display-2 font-weight-bold ml-5 pl-5">Register</h1>
+      </div>
+      <div class="row">
+        <h3 class="col ml-5 pl-5">Fill out this form to create an account.</h3>
+      </div>
+      <div class="row">
+        <h3 class="col ml-5 pl-5">Already have an account? <a href="/login">Login </a></h3>
+      </div>
+    </div>
+    <form method="post">
+      <div class="form-group">
+        <label class="lead font-weight-bold">Username
+          <input type="text" th:field="${registerFormDTO.username}" class="form-control" autofocus>
+        </label>
+        <p class="error" th:errors="${registerFormDTO.username}"></p>
+      </div>
+      <div class="form-group">
+        <label class="lead font-weight-bold">Password
+          <input type="password" th:field="${registerFormDTO.password}" class="form-control" required>
+        </label>
+        <p class="error" th:errors="${registerFormDTO.password}"></p>
+      </div>
+      <div class="form-group">
+        <label class="lead font-weight-bold">Verify Password
+          <input type="password" th:field="${registerFormDTO.verifyPassword}" class="form-control" required>
+        </label>
+      </div>
+
+<!--      <div class="clearfix">-->
+        <button type="submit" class="btn btn-success" value="Register">Sign Up</button>
+<!--      </div>-->
+
+  <!--instead of cancel, already have an account? (below it) sign in-->
+    </form>
   </div>
 
-  <div class="clearfix">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <button type="submit" class="signupbtn" value="Register"> Sign Up </button>
-  </div>
-
-</form>
+</div>
 
 </body>

@@ -2,9 +2,10 @@ package org.launchcode.WhatsSup.models;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 public class Recipe extends AbstractEntity{
@@ -23,27 +24,27 @@ public class Recipe extends AbstractEntity{
 
     private int numServings;
     @NotBlank(message="Please provide a brief description of your recipe")
-    @Size(min=3, max=500, message="Recipe description should not exceed 500 characters")
+    @Size(min=1, max=500, message="Recipe description should not exceed 500 characters")
     private String recipeDescription;
 
-    @NotBlank(message="It looks like  you haven't added any ingredients to your recipe")
-    private String ingredients;
+    @NotEmpty(message="It looks like  you haven't added any ingredients to your recipe")
+    private ArrayList<String> ingredients;
 
-    @NotBlank(message="It looks like  you haven't added any directions to your recipe")
-    private String directions;
+    @NotEmpty(message="It looks like  you haven't added any directions to your recipe")
+    private ArrayList<String> directions;
 
     private String notes;
 
     public Recipe(){}
 
-    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, String ingredients, String directions, String notes) {
+    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, ArrayList<String> ingredients, ArrayList<String> directions, String notes) {
         this.recipeTitle = recipeTitle;
         this.recipeAuthor = recipeAuthor;
         this.prepTimeMinutes = prepTimeMinutes;
         this.totalTimeMinutes = totalTimeMinutes;
         this.numServings = numServings;
         this.recipeDescription = recipeDescription;
-        this.ingredients = ingredients;//Cha
+        this.ingredients = ingredients;
         this.directions = directions;
         this.notes = notes;
     }
@@ -96,19 +97,19 @@ public class Recipe extends AbstractEntity{
         this.recipeDescription = recipeDescription;
     }
 
-    public String getIngredients() {
+    public ArrayList<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(ArrayList<String> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public String getDirections() {
+    public ArrayList<String> getDirections() {
         return directions;
     }
 
-    public void setDirections(String directions) {
+    public void setDirections(ArrayList<String> directions) {
         this.directions = directions;
     }
 
