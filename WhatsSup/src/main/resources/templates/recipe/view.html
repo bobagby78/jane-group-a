@@ -126,7 +126,9 @@ body::before {
                 </select>
             </div>
             <div class="col">
-                <input type="date" name="purchaseDate" class="form-control">
+                <input type="text" name="purchaseDate" placeholder="Purchase Date" class="form-control"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')">
             </div>
             <div class="col">
                 <button type="submit" class="btn btn-success">Add to My Kitchen!</button>
