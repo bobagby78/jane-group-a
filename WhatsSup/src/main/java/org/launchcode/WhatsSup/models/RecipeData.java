@@ -33,7 +33,7 @@ public class RecipeData extends AbstractEntity{
         if (fieldName.equals("name")){
             theValue = recipe.getRecipeTitle();
         } else if (fieldName.equals("employer")){
-            theValue = recipe.getRecipeAuthor().toString();
+            theValue = recipe.getAuthor().toString();
         } else {
             theValue = recipe.getIngredients().toString();
         }
@@ -57,7 +57,7 @@ public class RecipeData extends AbstractEntity{
 
             if (recipe.getRecipeTitle().toLowerCase().contains(lower_val)) {
                 results.add(recipe);
-            } else if (recipe.getRecipeAuthor().toString().toLowerCase().contains(lower_val)) {
+            } else if (recipe.getAuthor().toString().toLowerCase().contains(lower_val)) {
                 results.add(recipe);
             } else if (recipe.getIngredients().toString().toLowerCase().contains(lower_val)) {
                 results.add(recipe);

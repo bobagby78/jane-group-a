@@ -18,7 +18,7 @@ public class Recipe extends AbstractEntity{
     // initialize author to the currently logged in user.
     @NotNull(message="Please tell us who added the recipe")
     @Size (min=3, max=250, message="Recipe author should be at least 3 characters, but not exceed 250 characters")
-    private String recipeAuthor;
+    private String user;
 
     private int prepTimeMinutes;
     @NotNull(message="Please enter a value for total cooking time")
@@ -39,9 +39,8 @@ public class Recipe extends AbstractEntity{
 
     public Recipe(){}
 
-    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, ArrayList<String> ingredients, ArrayList<String> directions, String notes) {
+    public Recipe(String recipeTitle,  int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, ArrayList<String> ingredients, ArrayList<String> directions, String notes) {
         this.recipeTitle = recipeTitle;
-        this.recipeAuthor = recipeAuthor;
         this.prepTimeMinutes = prepTimeMinutes;
         this.totalTimeMinutes = totalTimeMinutes;
         this.numServings = numServings;
@@ -57,14 +56,6 @@ public class Recipe extends AbstractEntity{
 
     public void setRecipeTitle(String recipeTitle) {
         this.recipeTitle = recipeTitle;
-    }
-
-    public String getRecipeAuthor() {
-        return recipeAuthor;
-    }
-
-    public void setRecipeAuthor(String recipeAuthor) {
-        this.recipeAuthor = recipeAuthor;
     }
 
     public int getPrepTimeMinutes() {

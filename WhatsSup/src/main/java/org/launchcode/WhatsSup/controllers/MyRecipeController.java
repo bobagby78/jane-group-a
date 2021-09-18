@@ -23,12 +23,12 @@ public class MyRecipeController {
         this.recipeRepository = recipeRepository;
   }
 
-    public static void findByRecipeAuthor() {
+    public static void findByAuthor() {
     }
 
-    @GetMapping("/{recipe_author}")
-    public HashMap<String, String> findMyRecipesNameAndDescription(@PathVariable("recipe_author") String recipeAuthor) {
-        List<Recipe> myRecipes = this.recipeRepository.findByRecipeAuthor(recipeAuthor);
+    @GetMapping("/{author}")
+    public HashMap<String, String> findMyRecipesNameAndDescription(@PathVariable("author") String author) {
+        List<Recipe> myRecipes = this.recipeRepository.findByAuthor(author);
 
         HashMap<String, String> myRecipesNameAndDescription = new HashMap<String, String>();
         for (int i = 0; i < myRecipes.size(); i++){
