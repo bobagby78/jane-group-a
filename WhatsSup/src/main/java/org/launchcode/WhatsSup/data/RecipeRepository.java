@@ -9,12 +9,5 @@ import java.util.List;
 @Repository
 public interface RecipeRepository extends CrudRepository<Recipe, Integer> {
       List<Recipe> findByRecipeAuthor(String recipeAuthor);
-//      List<Recipe> findByRecipeName(String name);
-//      List<Recipe> findByRecipeDescription(String description);
-//      List<Recipe> findByRecipeDescription(String description);
-
-
-//      List<Recipe> findByIngredients(String ingredients);
-//      List<Recipe> findByRecipesByAuthor(String recipeAuthor);
-//      List<Recipe> findByUserRecipe(String recipeAuthor = username);
+      List<Recipe> findByIngredients(String ingredients);
 }
