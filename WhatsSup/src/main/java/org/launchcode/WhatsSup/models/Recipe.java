@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @Entity
 public class Recipe extends AbstractEntity{
-    //id being extended from AbstrEnt
+
     @NotBlank(message="Your recipe needs a title")
     @Size (min=3, max = 250, message="Recipe title should be between 3 and 250 characters")
     private String recipeTitle;
