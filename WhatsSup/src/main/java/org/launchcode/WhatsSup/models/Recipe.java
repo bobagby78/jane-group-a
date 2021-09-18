@@ -1,6 +1,7 @@
 package org.launchcode.WhatsSup.models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ public class Recipe extends AbstractEntity{
     @Size (min=3, max = 250, message="Recipe title should be between 3 and 250 characters")
     private String recipeTitle;
 
+    // initialize author to the currently logged in user.
     @NotNull(message="Please tell us who added the recipe")
     @Size (min=3, max=250, message="Recipe author should be at least 3 characters, but not exceed 250 characters")
     private String recipeAuthor;

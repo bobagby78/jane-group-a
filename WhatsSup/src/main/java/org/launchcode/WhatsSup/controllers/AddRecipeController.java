@@ -1,6 +1,7 @@
 package org.launchcode.WhatsSup.controllers;
 
 import org.launchcode.WhatsSup.data.AddRecipeRepository;
+import org.launchcode.WhatsSup.data.UserRepository;
 import org.launchcode.WhatsSup.models.IngredObj;
 import org.launchcode.WhatsSup.models.MeasurementObj;
 import org.launchcode.WhatsSup.models.Recipe;
@@ -19,6 +20,9 @@ public class AddRecipeController { //refactor to just be RecipeController
 
     @Autowired
     private AddRecipeRepository addRecipeRepository; //refactor to just RecipeRepository
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/add")
     public String displayAddRecipeForm(Model model){
