@@ -27,4 +27,6 @@ public class AddIngredientController {
         return "/ingredient/add";
     }
 
+
+
 }

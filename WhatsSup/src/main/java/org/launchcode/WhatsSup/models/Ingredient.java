@@ -57,4 +57,5 @@ public class Ingredient extends AbstractEntity{
     public int hashCode() {
         return Objects.hash(super.hashCode(), ingredientName, ingredientCategory, purchaseDate);
     }
+
 }
