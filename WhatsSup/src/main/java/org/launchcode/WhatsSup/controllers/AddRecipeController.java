@@ -28,11 +28,12 @@ public class AddRecipeController { //refactor to just be RecipeController
 
     @GetMapping("/add")
     public String displayAddRecipeForm(Model model, HttpSession session){
-        User currentUser = authenticationController.getUserFromSession(session);
-        String currentUsername=currentUser.getUsername();
+//        User currentUser = authenticationController.getUserFromSession(session);
+//        String currentUsername=currentUser.getUsername();
+//        model.addAttribute("currentUsername", currentUsername);
         model.addAttribute("title", "Add Recipe");
         model.addAttribute(new Recipe());
-        model.addAttribute("currentUsername", currentUsername);
+
         return"/recipe/add";
     }
 
