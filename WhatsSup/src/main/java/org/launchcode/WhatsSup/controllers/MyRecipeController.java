@@ -21,7 +21,7 @@ public class MyRecipeController {
 
     public MyRecipeController(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
-  }
+    }
 
     public static void findByRecipeAuthor() {
     }
@@ -37,4 +37,11 @@ public class MyRecipeController {
         return myRecipesNameAndDescription;
 
     }
+
+//    @GetMapping("/{recipe_author}")
+//    public List<Recipe>findMyRecipesNameAndDescription(@PathVariable("recipe_author") String recipeAuthor) {
+//        return this.recipeRepository.findByRecipeAuthor(recipeAuthor);
+//
+//
+//    }
 }

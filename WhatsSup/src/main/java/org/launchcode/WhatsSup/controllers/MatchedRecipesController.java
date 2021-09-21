@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,13 +26,10 @@ public class MatchedRecipesController {
     }
 
     @GetMapping("/{ingredients}")
-    public List<Recipe> findMatchedRecipes(@PathVariable("ingredients") String ingredients) {
+    public List<Recipe> findMatchedRecipes(@PathVariable("ingredients") ArrayList<String> ingredients) {
+
         List<Recipe> matchedRecipes = this.recipeRepository.findByIngredients(ingredients);
 
-//        HashMap<String, String> myRecipesNameAndDescription = new HashMap<String, String>();
-//        for (int i = 0; i < myRecipes.size(); i++){
-//            myRecipesNameAndDescription.put(myRecipes.get(i).getRecipeTitle(),myRecipes.get(i).getRecipeDescription());
-//        }
         return matchedRecipes;
 
     }
