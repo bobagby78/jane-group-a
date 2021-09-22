@@ -27,9 +27,10 @@ public class MatchedRecipesController {
 
     @GetMapping("/{ingredients}")
     public List<Recipe> findMatchedRecipes(@PathVariable("ingredients") ArrayList<String> ingredients) {
+        List<Recipe> matchedRecipes = this.recipeRepository.findByIngredients(ingredients.toString());
+        if (matchedRecipes == null){
 
-        List<Recipe> matchedRecipes = this.recipeRepository.findByIngredients(ingredients);
-
+        }
         return matchedRecipes;
 
     }

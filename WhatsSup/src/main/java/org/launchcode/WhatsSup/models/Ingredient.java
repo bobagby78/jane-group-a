@@ -1,15 +1,25 @@
 package org.launchcode.WhatsSup.models;
 
+import org.aspectj.apache.bcel.generic.Tag;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class Ingredient extends AbstractEntity{
     //id extended by AbstrEnt
+
     private String ingredientName;
     private String ingredientCategory; //meat, seafood, spice, condiment: from dropdown on "My Kitchen" add ingredient form
     private String purchaseDate; // as opposed to expiration date. expiration date can be figured from here.
+
+    @ManyToMany
+    private final List<Tag> tags = new ArrayList<>();
+
 
     public Ingredient() {
     }
@@ -44,6 +54,16 @@ public class Ingredient extends AbstractEntity{
         this.purchaseDate = purchaseDate;
     }
 
+
+//
+//    public List<Tag> getTags() {
+//        return tags;
+//    }
+//    public void addTag(Tag tag){
+//        this.tags.add(tag);
+//    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,4 +77,13 @@ public class Ingredient extends AbstractEntity{
     public int hashCode() {
         return Objects.hash(super.hashCode(), ingredientName, ingredientCategory, purchaseDate);
     }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
+    }
+
 }
