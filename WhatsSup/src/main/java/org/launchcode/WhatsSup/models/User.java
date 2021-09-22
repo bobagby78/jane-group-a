@@ -4,6 +4,10 @@ import com.sun.istack.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User extends org.launchcode.WhatsSup.models.AbstractEntity {
@@ -14,6 +18,10 @@ public class User extends org.launchcode.WhatsSup.models.AbstractEntity {
 
     @NotNull
     private String pwHash;
+
+    @OneToMany
+    @JoinColumn
+    private List<Recipe> recipes = new ArrayList<>();
 
     public User() {}
 

@@ -1,7 +1,7 @@
 package org.launchcode.WhatsSup.models;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -16,8 +16,12 @@ public class Recipe extends AbstractEntity{
     private String recipeTitle;
 
     // initialize author to the currently logged in user.
-    @NotNull(message="Please tell us who added the recipe")
-    @Size (min=3, max=250, message="Recipe author should be at least 3 characters, but not exceed 250 characters")
+
+    @ManyToOne
+    private User user;
+
+//    @NotNull(message="Please tell us who added the recipe")
+//    @Size (min=3, max=250, message="Recipe author should be at least 3 characters, but not exceed 250 characters")
     private String recipeAuthor;
 
     private int prepTimeMinutes;
@@ -39,8 +43,9 @@ public class Recipe extends AbstractEntity{
 
     public Recipe(){}
 
-    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, ArrayList<String> ingredients, ArrayList<String> directions, String notes) {
+    public Recipe(String recipeTitle, User user, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, ArrayList<String> ingredients, ArrayList<String> directions, String notes) {
         this.recipeTitle = recipeTitle;
+        this.user = user;
         this.recipeAuthor = recipeAuthor;
         this.prepTimeMinutes = prepTimeMinutes;
         this.totalTimeMinutes = totalTimeMinutes;
@@ -121,5 +126,13 @@ public class Recipe extends AbstractEntity{
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

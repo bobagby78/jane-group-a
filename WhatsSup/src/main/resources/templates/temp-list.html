@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script></head>
+
+</head>
+<body class="container">
+<div class="row container">
+
+    <div class="col">
+        All
+        <tr th:each="recipe : ${recipes}">
+            <p>
+                <a th:href="@{'/list/' + ${recipe.id}}" th:text="${recipe.id}"></a>
+            </p>
+
+        </tr>
+    </div>
+
+    <div class="col">
+        By Ingredient
+    </div>
+
+    <div class="col">
+        By User
+    </div>
+</div>
+
+</body>
+</html>
