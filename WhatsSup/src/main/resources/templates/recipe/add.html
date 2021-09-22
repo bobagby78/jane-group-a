@@ -22,24 +22,30 @@
 <div class="row">
     <div class="row">
         <form id="add-recipe" method="post">
+            <div class="row">
+                <div class="col-lg-2">
+                    <label th:for="user">User</label>
+                    <p>
+                    <select name="userId">
+                        <option
+
+                                th:each="user : ${users}"
+                                th:text="${user.username}"
+                                th:field="${recipe.recipeAuthor}"
+                                th:value="${user.id}"
+                        ></option>
+                    </select>
+                    </p>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-lg-2">Title <input class="form-control" th:field="${recipe.recipeTitle}" autofocus></div>
                 <h5 class="text-danger" th:errors="${recipe.recipeTitle}"></h5>
 <!--                TODO: make the currentUsername value below work-->
-                <div class="col-lg-2">
-                    <label th:for="user">Author</label>
-                    <select name="userId">
-                        <option th:each="user : ${users}"
-                                th:text="${user.username}"
-                                th:value="${user.id}"></option>
-                    </select>
-                </div>
-<!--                <div class="col-lg-2">User <input class="form-control" type="text" th:field="${recipe.currentUser}"> </div>-->
-<!--                <div class="col-lg-2">Author <input class="form-control" type="text" th:field="${recipe.recipeAuthor}">-->
-<!--&lt;!&ndash;                                                    th:value="${currentUsername}">&ndash;&gt;-->
-<!--                </div>-->
-                <h5 class="text-danger" th:errors="${recipe.recipeAuthor}"></h5>
+
+                <div class="col-lg-2">Author <input class="form-control" type="text" th:field="${recipe.recipeAuthor}"></div>
+<!--                <h5 class="text-danger" th:errors="${recipe.recipeAuthor}"></h5>-->
                 <div class="col-lg-2">Prep time <input class="form-control" type="number" th:field="${recipe.prepTimeMinutes}"></div>
                 <div class="col-lg-2">Total time <input class="form-control" type="number" th:field="${recipe.totalTimeMinutes}"></div>
                 <h5 class="text-danger" th:errors="${recipe.totalTimeMinutes}"></h5>
