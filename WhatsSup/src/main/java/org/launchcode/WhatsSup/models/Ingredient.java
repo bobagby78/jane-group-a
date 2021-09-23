@@ -1,7 +1,5 @@
 package org.launchcode.WhatsSup.models;
 
-import org.aspectj.apache.bcel.generic.Tag;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
@@ -54,14 +52,6 @@ public class Ingredient extends AbstractEntity{
         this.purchaseDate = purchaseDate;
     }
 
-
-//
-//    public List<Tag> getTags() {
-//        return tags;
-//    }
-//    public void addTag(Tag tag){
-//        this.tags.add(tag);
-//    }
 
 
     @Override
