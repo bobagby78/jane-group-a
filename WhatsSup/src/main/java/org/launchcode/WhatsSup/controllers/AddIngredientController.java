@@ -21,6 +21,9 @@ public class AddIngredientController {
     @Autowired
     private AddIngredientRepository addIngredientRepository;
 
+    @Autowired
+    private TagRepository tagRepository;
+
     @GetMapping("/add")
     public String displayAddIngredientForm(Model model){
         model.addAttribute("title", "Add Ingredient");
@@ -30,7 +33,7 @@ public class AddIngredientController {
 
     @PostMapping("/add")
     public String processAddIngredientForm(@ModelAttribute Ingredient newIngredient, Model model){
-       addIngredientRepository.save(newIngredient);
+        addIngredientRepository.save(newIngredient);
         return "/ingredient/add";
     }
 
@@ -45,7 +48,7 @@ public class AddIngredientController {
 
         //TODO fix findAll()
 
-        model.addAttribute("tags", TagRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
         IngredientTagDTO ingredientTagDTO = new IngredientTagDTO();
         ingredientTagDTO.setIngredient(ingredient);
         model.addAttribute("ingredientTag", ingredientTagDTO);
@@ -64,9 +67,9 @@ public class AddIngredientController {
             Tag tag = ingredientTagDTO.getTag();
             if (!ingredient.getTags().contains(tag)){
                 ingredient.addTag(tag);
-
+                tagRepository.save(tag);
                 //TODO fix save method
-                ingredient.save(ingredient);
+                //ingredient.save(ingredient);
             }
             return "redirect:detail?eventId=" + ingredient.getId();
         }
