@@ -1,13 +1,11 @@
 package org.launchcode.WhatsSup.models;
 
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import org.launchcode.WhatsSup.models.Tag;
 
 @Entity
 public class Ingredient extends AbstractEntity{
@@ -17,7 +15,7 @@ public class Ingredient extends AbstractEntity{
     private String ingredientCategory; //meat, seafood, spice, condiment: from dropdown on "My Kitchen" add ingredient form
     private String purchaseDate; // as opposed to expiration date. expiration date can be figured from here.
 
-    @ManyToMany//(mappedBy = "ingredients")
+    @ManyToMany
     private final List<Tag> tags = new ArrayList<>();
 
 
@@ -54,14 +52,6 @@ public class Ingredient extends AbstractEntity{
         this.purchaseDate = purchaseDate;
     }
 
-
-//
-//    public List<Tag> getTags() {
-//        return tags;
-//    }
-//    public void addTag(Tag tag){
-//        this.tags.add(tag);
-//    }
 
 
     @Override
