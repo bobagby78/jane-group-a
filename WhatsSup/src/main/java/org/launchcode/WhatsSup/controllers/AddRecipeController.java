@@ -60,16 +60,17 @@ public class AddRecipeController { //refactor to just be RecipeController
 
 
     @GetMapping("add-tag")
-    public String displayAddTagForm(@RequestParam Integer recipeId, Model model){
+    public String displayAddTagForm(@RequestParam Integer featuredRecipeId, Model model){
         //TODO is Recipe or AddRecipe what should be optional<>?
-        Optional<Recipe> result = addRecipeRepository.findById(recipeId);
+        //TODO RequestParam may need altered
+        Optional<Recipe> result = addRecipeRepository.findById(featuredRecipeId);
         Recipe featuredIngredient = result.get();
         model.addAttribute("title", "Add Tag to: " + featuredIngredient.getFeaturedIngredient());
         model.addAttribute("tags", tagRepository.findAll());
         FeaturedIngredientTagDTO featuredIngredientTag = new FeaturedIngredientTagDTO();
         featuredIngredientTag.setFeaturedIngredient(featuredIngredient);
         model.addAttribute("featuredRecipeTag", featuredIngredientTag);
-        return "events/add-tag.html";
+        return "recipe/add-tag.html";
     }
 
     @PostMapping("add-tag")
@@ -84,7 +85,7 @@ public class AddRecipeController { //refactor to just be RecipeController
                 featuredIngredient.addTag(tag);
                 addRecipeRepository.save(featuredIngredient);
             }
-            return "redirect:detail?eventId=" + featuredIngredient.getId();
+            return "redirect:detail?featuredIngredientId=" + featuredIngredient.getId();
         }
 
         return "redirect:add-tag";

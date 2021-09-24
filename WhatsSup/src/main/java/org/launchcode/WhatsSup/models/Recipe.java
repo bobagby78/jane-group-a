@@ -128,6 +128,8 @@ public class Recipe extends AbstractEntity{
         this.notes = notes;
     }
 
+
+
     public String getFeaturedIngredient() {
         return featuredIngredient;
     }

@@ -7,9 +7,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Chris Bay
- */
+
 @Entity
 public class Tag extends AbstractEntity {
 
@@ -18,7 +16,7 @@ public class Tag extends AbstractEntity {
     private String name;
 
     @ManyToMany(mappedBy = "tags")
-    private final List<Recipe> events = new ArrayList<>();
+    private final List<Recipe> featuredIngredient = new ArrayList<>();
 
     public Tag(String name) {
         this.name = name;
@@ -38,7 +36,7 @@ public class Tag extends AbstractEntity {
         this.name = name;
     }
 
-    public List<Recipe> getEvents() {
-        return events;
+    public List<Recipe> getFeaturedIngredient() {
+        return featuredIngredient;
     }
 }
