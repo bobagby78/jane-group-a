@@ -61,9 +61,9 @@ button:hover {
 }
 
 /* Add padding to container elements */
-.container {
-  padding: 16px;
-}
+<!--.container {-->
+<!--  padding: 16px;-->
+<!--}-->
 
 /* Clear floats */
 .clearfix::after {
@@ -81,12 +81,10 @@ button:hover {
 </style>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<nav class="navbar navbar-expand-xl navbar-light fixed-top mb-4 " style="background-color: #d15C4A">
-  <a class="navbar-brand px-lg-5 mx-auto" style="visibility: hidden" href="#WhatsSup">WhatsSup</a>
-</nav>
+<div th:replace="fragments :: unauthenticated-user-navbar"></div>
 <body class="container">
 
-<header th:replace="fragments :: navigation"></header>
+<!--<header th:replace="fragments :: navigation"></header>-->
 
 <div class="container">
   <div class="d-flex text-center justify-content-between mx-5">
@@ -101,7 +99,7 @@ button:hover {
         <h3 class="col ml-5 pl-5">Already have an account? <a href="/login">Login </a></h3>
       </div>
     </div>
-<form method="post">
+    <form method="post">
       <div class="form-group">
         <label class="lead font-weight-bold">Username
           <input type="text" th:field="${registerFormDTO.username}" class="form-control" autofocus>
@@ -114,16 +112,17 @@ button:hover {
         </label>
         <p class="error" th:errors="${registerFormDTO.password}"></p>
       </div>
-      <label class="lead font-weight-bold">Verify Password
-        <input type="password" th:field="${registerFormDTO.verifyPassword}" class="form-control" required>
-      </label>
-
-      <div class="clearfix">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn" value="Register">Sign Up</button>
+      <div class="form-group">
+        <label class="lead font-weight-bold">Verify Password
+          <input type="password" th:field="${registerFormDTO.verifyPassword}" class="form-control" required>
+        </label>
       </div>
 
-  instead of cancel, already have an account? (below it) sign in
+<!--      <div class="clearfix">-->
+        <button type="submit" class="btn btn-success" value="Register">Sign Up</button>
+<!--      </div>-->
+
+  <!--instead of cancel, already have an account? (below it) sign in-->
     </form>
   </div>
 
