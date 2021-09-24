@@ -1,11 +1,13 @@
 package org.launchcode.WhatsSup.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Recipe extends AbstractEntity{
@@ -35,9 +37,13 @@ public class Recipe extends AbstractEntity{
 
     private String notes;
 
+    private String featuredIngredient;
+
+    @ManyToMany
+    private final List<Tag> tags = new ArrayList<>();
     public Recipe(){}
 
-    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, ArrayList<String> ingredients, ArrayList<String> directions, String notes) {
+    public Recipe(String recipeTitle, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, ArrayList<String> ingredients, ArrayList<String> directions, String notes, String featuredIngredient) {
         this.recipeTitle = recipeTitle;
         this.recipeAuthor = recipeAuthor;
         this.prepTimeMinutes = prepTimeMinutes;
@@ -47,6 +53,7 @@ public class Recipe extends AbstractEntity{
         this.ingredients = ingredients;
         this.directions = directions;
         this.notes = notes;
+        this.featuredIngredient = featuredIngredient;
     }
 
     public String getRecipeTitle() {
@@ -119,5 +126,21 @@ public class Recipe extends AbstractEntity{
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getFeaturedIngredient() {
+        return featuredIngredient;
+    }
+
+    public void setFeaturedIngredient(String featuredIngredient) {
+        this.featuredIngredient = featuredIngredient;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
     }
 }

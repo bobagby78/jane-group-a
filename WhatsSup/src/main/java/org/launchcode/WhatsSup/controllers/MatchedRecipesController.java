@@ -28,10 +28,6 @@ public class MatchedRecipesController {
     public List<Recipe> findMatchedRecipes(@PathVariable("ingredients") String ingredients) {
         List<Recipe> matchedRecipes = this.recipeRepository.findByIngredients(ingredients);
 
-//        HashMap<String, String> myRecipesNameAndDescription = new HashMap<String, String>();
-//        for (int i = 0; i < myRecipes.size(); i++){
-//            myRecipesNameAndDescription.put(myRecipes.get(i).getRecipeTitle(),myRecipes.get(i).getRecipeDescription());
-//        }
         return matchedRecipes;
 
     }

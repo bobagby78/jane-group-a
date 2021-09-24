@@ -1,9 +1,12 @@
 package org.launchcode.WhatsSup.controllers;
 
 import org.launchcode.WhatsSup.data.AddRecipeRepository;
+import org.launchcode.WhatsSup.data.TagRepository;
 import org.launchcode.WhatsSup.models.IngredObj;
 import org.launchcode.WhatsSup.models.MeasurementObj;
 import org.launchcode.WhatsSup.models.Recipe;
+import org.launchcode.WhatsSup.models.Tag;
+import org.launchcode.WhatsSup.models.dto.FeaturedIngredientTagDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +22,9 @@ public class AddRecipeController { //refactor to just be RecipeController
 
     @Autowired
     private AddRecipeRepository addRecipeRepository; //refactor to just RecipeRepository
+
+    @Autowired
+    private TagRepository tagRepository;
 
     @GetMapping("/add")
     public String displayAddRecipeForm(Model model){
@@ -50,6 +56,38 @@ public class AddRecipeController { //refactor to just be RecipeController
         }
 
         return"/recipe/view"; //optional, follow model from jobs with jobID as req param.
+    }
+
+
+    @GetMapping("add-tag")
+    public String displayAddTagForm(@RequestParam Integer recipeId, Model model){
+        //TODO is Recipe or AddRecipe what should be optional<>?
+        Optional<Recipe> result = addRecipeRepository.findById(recipeId);
+        Recipe recipe = result.get();
+        model.addAttribute("title", "Add Tag to: " + recipe.getName());
+        model.addAttribute("tags", tagRepository.findAll());
+        FeaturedIngredientTagDTO featuredRecipeTag = new FeaturedIngredientTagDTO();
+        featuredRecipeTag.setFeaturedRecipe(featuredRecipe);
+        model.addAttribute("featuredRecipeTag", featuredRecipeTag);
+        return "events/add-tag.html";
+    }
+
+    @PostMapping("add-tag")
+    public String processAddTagForm(@ModelAttribute @Valid FeaturedIngredientTagDTO featuredIngredient,
+                                    Errors errors,
+                                    Model model){
+
+        if (!errors.hasErrors()) {
+            Recipe recipe = featuredIngredient.getRecipe();
+            Tag tag = featuredIngredient.getTag();
+            if (!recipe.getTags().contains(tag)){
+                recipe.addTag(tag);
+                addRecipeRepository.save(recipe);
+            }
+            return "redirect:detail?eventId=" + featuredIngredient.getId();
+        }
+
+        return "redirect:add-tag";
     }
 
 }

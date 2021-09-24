@@ -23,9 +23,46 @@
     <div class="row">
         <form id="add-recipe" method="post">
 
+
+
+
+
+
+<!--            <!DOCTYPE html>-->
+<!--            <html lang="en" xmlns:th="http://www.thymeleaf.org/">-->
+<!--            <head th:replace="fragments :: head"></head>-->
+<!--            <body class="container">-->
+
+<!--            <header th:replace="fragments :: header"></header>-->
+
+<!--            <form method="post">-->
+<!--                <div class="form-group">-->
+<!--                    <input type="hidden" th:field="${eventTag.event}">-->
+<!--                    <select th:field="${eventTag.tag}">-->
+<!--                        <option th:each="tag : ${tags}"-->
+<!--                                th:value="${tag.id}"-->
+<!--                                th:text="${tag.name}"-->
+<!--                        ></option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <input type="submit" class="btn btn-success" value="Add Tag">-->
+<!--            </form>-->
+
+<!--            </body>-->
+<!--            </html>-->
+
+
+
+
+
+
             <div class="row">
                 <div class="col-lg-2">Title <input class="form-control" th:field="${recipe.recipeTitle}" autofocus></div>
                 <h5 class="text-danger" th:errors="${recipe.recipeTitle}"></h5>
+
+                <div class="col-lg-2">FeaturedIngredient <input class="form-control" th:field="${recipe.featuredIngredient}" autofocus></div>
+                <h5 class="text-danger" th:errors="${recipe.featuredIngredient}"></h5>
+
                 <div class="col-lg-2">Author <input class="form-control" type="text" th:field="${recipe.recipeAuthor}"></div>
                 <h5 class="text-danger" th:errors="${recipe.recipeAuthor}"></h5>
                 <div class="col-lg-2">Prep time <input class="form-control" type="number" th:field="${recipe.prepTimeMinutes}"></div>
