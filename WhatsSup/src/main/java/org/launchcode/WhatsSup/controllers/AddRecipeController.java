@@ -63,26 +63,26 @@ public class AddRecipeController { //refactor to just be RecipeController
     public String displayAddTagForm(@RequestParam Integer recipeId, Model model){
         //TODO is Recipe or AddRecipe what should be optional<>?
         Optional<Recipe> result = addRecipeRepository.findById(recipeId);
-        Recipe recipe = result.get();
-        model.addAttribute("title", "Add Tag to: " + recipe.getName());
+        Recipe featuredIngredient = result.get();
+        model.addAttribute("title", "Add Tag to: " + featuredIngredient.getFeaturedIngredient());
         model.addAttribute("tags", tagRepository.findAll());
-        FeaturedIngredientTagDTO featuredRecipeTag = new FeaturedIngredientTagDTO();
-        featuredRecipeTag.setFeaturedRecipe(featuredRecipe);
-        model.addAttribute("featuredRecipeTag", featuredRecipeTag);
+        FeaturedIngredientTagDTO featuredIngredientTag = new FeaturedIngredientTagDTO();
+        featuredIngredientTag.setFeaturedIngredient(featuredIngredient);
+        model.addAttribute("featuredRecipeTag", featuredIngredientTag);
         return "events/add-tag.html";
     }
 
     @PostMapping("add-tag")
-    public String processAddTagForm(@ModelAttribute @Valid FeaturedIngredientTagDTO featuredIngredient,
+    public String processAddTagForm(@ModelAttribute @Valid FeaturedIngredientTagDTO featuredIngredientTag,
                                     Errors errors,
                                     Model model){
 
         if (!errors.hasErrors()) {
-            Recipe recipe = featuredIngredient.getRecipe();
-            Tag tag = featuredIngredient.getTag();
-            if (!recipe.getTags().contains(tag)){
-                recipe.addTag(tag);
-                addRecipeRepository.save(recipe);
+            Recipe featuredIngredient = featuredIngredientTag.getFeaturedIngredient();
+            Tag tag = featuredIngredientTag.getTag();
+            if (!featuredIngredient.getTags().contains(tag)){
+                featuredIngredient.addTag(tag);
+                addRecipeRepository.save(featuredIngredient);
             }
             return "redirect:detail?eventId=" + featuredIngredient.getId();
         }
