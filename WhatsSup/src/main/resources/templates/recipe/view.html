@@ -40,7 +40,7 @@ body::before {
         </div>
         <div class="row">
             <div class="col">
-                <h5 th:text="'Author: ' + ${recipe.recipeAuthor}">Author</h5>
+                <h5 th:text="'Author: ' + ${recipe.user.getUsername()}">Author</h5>
             </div>
             <div class="col">
                 <h5 th:text="'Serves: ' + ${recipe.numServings} + ' people'">Number of Servings</h5>
