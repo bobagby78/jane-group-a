@@ -33,32 +33,19 @@ public class AddRecipeController { //refactor to just be RecipeController
     public AuthenticationController authenticationController;
 
     @GetMapping("/add")
-    public String displayAddRecipeForm(Model model, HttpSession session){
-//        User currentUser = authenticationController.getUserFromSession(session);
-//        String currentUsername=currentUser.getUsername();
-//        model.addAttribute("currentUsername", currentUsername);
+    public String displayAddRecipeForm(Model model){
         model.addAttribute("title", "Add Recipe");
-        model.addAttribute("users", userRepository.findAll());
         model.addAttribute(new Recipe());
-
         return"/recipe/add";
     }
 
     @PostMapping("/add")
     public String processAddRecipeForm(@ModelAttribute @Valid
-                                       @RequestParam(required = false) Integer userId,
-                                       Recipe newRecipe,
-                                       Errors errors){
+                                                   Recipe newRecipe,
+                                                   Errors errors){
         if(errors.hasErrors()){
             return "/recipe/add";
         }
-
-        Optional<User> optionalUser = userRepository.findById(userId);
-        if (optionalUser.isPresent()){
-            User user = optionalUser.get();
-            newRecipe.setUser(user);
-        }
-
         addRecipeRepository.save(newRecipe);
         return "redirect:../"; //refactor to return "view-my-recipes" when complete
     }

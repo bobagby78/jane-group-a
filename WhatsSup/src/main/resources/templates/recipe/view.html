@@ -40,7 +40,7 @@ body::before {
         </div>
         <div class="row">
             <div class="col">
-                <h5 th:text="'Author: ' + ${recipe.recipeAuthor}">Author</h5>
+                <h5 th:text="'Author: ' + ${recipe.user.getUsername()}">Author</h5>
             </div>
             <div class="col">
                 <h5 th:text="'Serves: ' + ${recipe.numServings} + ' people'">Number of Servings</h5>
@@ -126,7 +126,9 @@ body::before {
                 </select>
             </div>
             <div class="col">
-                <input type="date" name="purchaseDate" class="form-control">
+                <input type="text" name="purchaseDate" placeholder="Purchase Date" class="form-control"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')">
             </div>
             <div class="col">
                 <button type="submit" class="btn btn-success">Add to My Kitchen!</button>
