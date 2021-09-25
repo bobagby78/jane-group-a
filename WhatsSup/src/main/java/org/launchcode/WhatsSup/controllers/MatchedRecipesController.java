@@ -17,18 +17,18 @@ import java.util.List;
 @Controller
 @RequestMapping("/matchedrecipes")
 public class MatchedRecipesController {
-    @Autowired
-    private final RecipeRepository recipeRepository;
-
-    public MatchedRecipesController(RecipeRepository recipeRepository) {
-        this.recipeRepository = recipeRepository;
-    }
-
-    @GetMapping("/{ingredients}")
-    public List<Recipe> findMatchedRecipes(@PathVariable("ingredients") String ingredients) {
-        List<Recipe> matchedRecipes = this.recipeRepository.findByIngredients(ingredients);
-
-        return matchedRecipes;
-
-    }
+//    @Autowired
+//    private final RecipeRepository recipeRepository;
+//
+//    public MatchedRecipesController(RecipeRepository recipeRepository) {
+//        this.recipeRepository = recipeRepository;
+//    }
+//
+//    @GetMapping("/{ingredients}")
+//    public List<Recipe> findMatchedRecipes(@PathVariable("ingredients") String ingredients) {
+//        List<Recipe> matchedRecipes = this.recipeRepository.findByIngredients(ingredients);
+//
+//        return matchedRecipes;
+//
+//    }
 }

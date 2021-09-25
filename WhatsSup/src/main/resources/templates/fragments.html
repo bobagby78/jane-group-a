@@ -4,30 +4,30 @@
   <meta charset="UTF-8"/>
   <title>WhatsSup</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!--  <link th:href="@{/styles.css}" rel="stylesheet">-->
-<!--  can't use styles.css across views with so many style tags in html, would need to add them to styles.css
-      will do that much later-->
+<!--  can't use styles.css across views with so many style tags in html, would need to add them to styles.css-->
 </head>
 <body>
 <nav th:fragment="navigation">
   <nav class="navbar navbar-expand-xl navbar-light fixed-top mb-4" style="background-color: #d15C4A">
-    <a class="navbar-brand px-lg-5 mx-auto" href="/index">WhatsSup</a> <!--changed hrefs to redirect user to appropriate pages, not query params-->
-    <ul class="navbar-nav mx-auto" id="navbar">
+    <a class="navbar-brand px-lg-5 mx-auto" href="#WhatsSup">WhatsSup</a>
+    <ul class="navbar-nav mr-auto" id="navbar">
       <li class="nav-item">
         <a class="nav-link px-lg-5 mx-auto" href="#matchrecipes">Match Recipes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link px-lg-5 mx-auto" href="/kitchen">My Kitchen</a>
+        <a class="nav-link px-lg-5 mx-auto" href="#kitchen">My Kitchen</a>
       </li>
       <li class="nav-item">
         <a class="nav-link px-lg-5 mx-auto" href="#myrecipes">My Recipes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link px-lg-5 mx-auto" href="/recipe/add">Add Recipes</a>
+        <a class="nav-link px-lg-5 mx-auto" href="#addrecipes">Add Recipes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link px-lg-5 ml-auto" href="/logout">Log Out</a>
+        <a class="nav-link px-lg-5 mx-auto" href="#logout">Log Out</a>
       </li>
       </li>
     </ul>

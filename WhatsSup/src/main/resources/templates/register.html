@@ -81,7 +81,9 @@ button:hover {
 </style>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<div th:replace="fragments :: unauthenticated-user-navbar"></div>
+<nav class="navbar navbar-expand-xl navbar-light fixed-top mb-4 " style="background-color: #d15C4A">
+  <a class="navbar-brand px-lg-5 mx-auto" style="visibility: hidden" href="#WhatsSup">WhatsSup</a>
+</nav>
 <body class="container">
 
 <!--<header th:replace="fragments :: navigation"></header>-->
@@ -112,15 +114,14 @@ button:hover {
         </label>
         <p class="error" th:errors="${registerFormDTO.password}"></p>
       </div>
-      <div class="form-group">
-        <label class="lead font-weight-bold">Verify Password
-          <input type="password" th:field="${registerFormDTO.verifyPassword}" class="form-control" required>
-        </label>
-      </div>
+      <label class="lead font-weight-bold">Verify Password
+        <input type="password" th:field="${registerFormDTO.verifyPassword}" class="form-control" required>
+      </label>
 
-<!--      <div class="clearfix">-->
-        <button type="submit" class="btn btn-success" value="Register">Sign Up</button>
-<!--      </div>-->
+      <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn" value="Register">Sign Up</button>
+      </div>
 
   <!--instead of cancel, already have an account? (below it) sign in-->
     </form>
