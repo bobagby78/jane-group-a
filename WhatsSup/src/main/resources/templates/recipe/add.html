@@ -142,6 +142,20 @@
                     </div>
                 </div>
 
+
+                <form method="post">-->
+                                    <div class="form-group">
+                                        <input type="hidden" th:field="${featuredIngredient.event}">
+                                        <select th:field="${featuredIngredient.tag}">
+                                            <option th:each="tag : ${tags}"
+                                                    th:value="${tag.id}"
+                                                    th:text="${tag.name}"
+                                            ></option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="btn btn-success" value="Add Tag">
+                                </form>
+
             </div>
 
             <input class="form-control btn btn-success w-25" type="submit" value="Submit Recipe">
