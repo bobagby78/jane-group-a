@@ -24,9 +24,7 @@ public class MatchedRecipesController {
 
 
     @GetMapping
-    String displayMatchedRecipes(Model model
-//                                , @RequestParam(required = false)Integer recipeId
-                                ){
+    String displayMatchedRecipes(Model model){
 
             model.addAttribute("recipes", "Recipes go here");
                     //addRecipeRepository.findAll());
