@@ -16,21 +16,23 @@ import java.util.Optional;
 
 //@RestController
 @Controller
-@RequestMapping("/matchedrecipes")
+@RequestMapping("matchedrecipes")
 public class MatchedRecipesController {
+
     @Autowired
     private AddRecipeRepository addRecipeRepository;
 
 
-    @GetMapping String displayMatchedRecipes(Model model, @RequestParam(required = false)Integer recipeId){
-//        if (recipeId ==null){
+    @GetMapping
+    String displayMatchedRecipes(Model model
+//                                , @RequestParam(required = false)Integer recipeId
+                                ){
 
-            model.addAttribute("recipes", addRecipeRepository.findAll());
+            model.addAttribute("recipes", "Recipes go here");
+                    //addRecipeRepository.findAll());
 //        }
 
-
-
-        return "/matchedRecipe";
+        return "matchedrecipes";
     }
 
 //TODO: make a list of recipes that can be created using the available ingredient

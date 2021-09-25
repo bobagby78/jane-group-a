@@ -39,21 +39,26 @@
 <body class="container-fluid pt-lg-3 font-weight-bold" >
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 class="display-1">My Recipes</h1>
-<div class="row">
-    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>
-    <div class="col-sm-8">Recipe Name & Description</div>
-</div>
 
-<div class="row" th:border="primary">
-    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>
-    <div class="col-sm-8">Recipe Name & Description</div>
-</div>
-<div class="row">
-    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>
-    <div class="col-sm-8">Recipe Name & Description</div>
-</div>
-<div class="row">
-    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>
-    <div class="col-sm-8">Recipe Name & Description</div>
-</div>
+<p th:text="${recipes}"></p>
+<h1 class="display-1">My Recipes</h1>
+<!--<div class="row">-->
+<!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
+<!--    <div class="col-sm-8">Recipe Name & Description</div>-->
+<!--</div>-->
+
+<!--<div class="row" th:border="primary">-->
+<!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
+<!--    <div class="col-sm-8">Recipe Name & Description</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
+<!--    <div class="col-sm-8">Recipe Name & Description</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
+<!--    <div class="col-sm-8">Recipe Name & Description</div>-->
+<!--</div>-->
+
+</body>
+</html>

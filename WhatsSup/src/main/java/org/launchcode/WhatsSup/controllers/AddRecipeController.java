@@ -60,7 +60,7 @@ public class AddRecipeController { //refactor to just be RecipeController
         }
 
         addRecipeRepository.save(newRecipe);
-        return "redirect:../"; //refactor to return "view-my-recipes" when complete
+        return "redirect:/recipe/add"; //refactor to return "view-my-recipes" when complete
     }
 
     @GetMapping("/view/{recipeId}")
