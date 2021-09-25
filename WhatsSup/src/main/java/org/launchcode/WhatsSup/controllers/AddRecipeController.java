@@ -1,6 +1,7 @@
 package org.launchcode.WhatsSup.controllers;
 
 import org.launchcode.WhatsSup.data.AddRecipeRepository;
+import org.launchcode.WhatsSup.data.RecipeRepository;
 import org.launchcode.WhatsSup.data.TagRepository;
 import org.launchcode.WhatsSup.data.UserRepository;
 import org.launchcode.WhatsSup.models.*;
@@ -32,10 +33,15 @@ public class AddRecipeController { //refactor to just be RecipeController
     @Autowired
     public AuthenticationController authenticationController;
 
+    @Autowired
+    private RecipeRepository recipeRepository;
+
     @GetMapping("/add")
     public String displayAddRecipeForm(Model model){
         model.addAttribute("title", "Add Recipe");
         model.addAttribute(new Recipe());
+
+
         return"/recipe/add";
     }
 
@@ -66,10 +72,9 @@ public class AddRecipeController { //refactor to just be RecipeController
 
 
     @GetMapping("add-tag")
-    public String displayAddTagForm(@RequestParam Integer featuredRecipeId, Model model){
-        //TODO is Recipe or AddRecipe what should be optional<>?
-        //TODO RequestParam may need altered
-        Optional<Recipe> result = addRecipeRepository.findById(featuredRecipeId);
+    public String displayAddTagForm(@RequestParam Integer recipeId, Model model){
+        //TODO mapping results in error.
+        Optional<Recipe> result = recipeRepository.findById(recipeId);
         Recipe featuredIngredient = result.get();
         model.addAttribute("title", "Add Tag to: " + featuredIngredient.getFeaturedIngredient());
         model.addAttribute("tags", tagRepository.findAll());
