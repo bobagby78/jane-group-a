@@ -24,13 +24,22 @@ public class MatchedRecipesController {
 
 
     @GetMapping
-    String displayMatchedRecipes(Model model){
+    public String displayMatchedRecipes(Model model){
 
-            model.addAttribute("recipes", "Recipes go here");
-                    //addRecipeRepository.findAll());
+        model.addAttribute("recipes", "Matched Recipes go here");
+                //addRecipeRepository.findAll());
 //        }
 
-        return "matchedrecipes";
+        return "matchedrecipes/index";
+    }
+
+    @GetMapping("all")
+    public String ListAllRecipes(Model model){
+
+        model.addAttribute("recipes", addRecipeRepository.findAll());
+
+
+        return"matchedrecipes/all";
     }
 
 //TODO: make a list of recipes that can be created using the available ingredient
