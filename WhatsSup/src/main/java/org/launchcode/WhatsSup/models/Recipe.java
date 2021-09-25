@@ -42,13 +42,13 @@ public class Recipe extends AbstractEntity{
 
     private String notes;
 
-    private String featuredIngredient;
+    private ArrayList<String> featuredIngredient;
 
     @ManyToMany
     private final List<Tag> tags = new ArrayList<>();
     public Recipe(){}
 
-    public Recipe(String recipeTitle, User user, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, ArrayList<String> ingredients, ArrayList<String> directions, String notes, String featuredIngredient) {
+    public Recipe(String recipeTitle, User user, String recipeAuthor, int prepTimeMinutes, int totalTimeMinutes, int numServings, String recipeDescription, ArrayList<String> ingredients, ArrayList<String> directions, String notes, ArrayList<String> featuredIngredient) {
         this.recipeTitle = recipeTitle;
         this.user = user;
         this.recipeAuthor = recipeAuthor;
@@ -148,11 +148,11 @@ public class Recipe extends AbstractEntity{
 
 
 
-    public String getFeaturedIngredient() {
+    public ArrayList<String> getFeaturedIngredient() {
         return featuredIngredient;
     }
 
-    public void setFeaturedIngredient(String featuredIngredient) {
+    public void setFeaturedIngredient(ArrayList<String> featuredIngredient) {
         this.featuredIngredient = featuredIngredient;
     }
 
