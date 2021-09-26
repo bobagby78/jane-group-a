@@ -32,31 +32,36 @@ public class MatchedRecipesController {
     @GetMapping
     public String displayMatchedRecipes(Model model){
 
-        Iterable<Recipe> recipes;
-        recipes=addRecipeRepository.findAll();
+        Iterable<Recipe> allRecipes;
+        allRecipes=addRecipeRepository.findAll();
 
+        ArrayList<Recipe> blacklist = new ArrayList<>();
         ArrayList<Recipe> matchedRecipes = new ArrayList<>();
         ArrayList<Recipe> userRecipes = new ArrayList<>();
 
         Iterable<Ingredient> allIngredients = addIngredientRepository.findAll();
         ArrayList<String> myIngredients = new ArrayList<>();
 
-
         for (Ingredient ingredient : allIngredients){
             myIngredients.add(ingredient.getIngredientName().toLowerCase());
         }
-        for(Recipe recipe : recipes){
 
-            if(myIngredients.contains(recipe.getIngredients())) {
-                if (!matchedRecipes.contains(recipe)) {
+        for(Recipe recipe : allRecipes){
+            for (String ingredientToMatch : recipe.getFeaturedIngredient()) {
+                if(!myIngredients.contains(ingredientToMatch)) {
+                   blacklist.add(recipe);
+                }else if(!matchedRecipes.contains(recipe)){
                     matchedRecipes.add(recipe);
                 }
             }
+
         }
-        model.addAttribute("recipes", recipes);
+
+        model.addAttribute("allRecipes", allRecipes);
+        model.addAttribute("matchedRecipes", matchedRecipes);
 
 
-//        model.addAttribute("recipes", addRecipeRepository.findAll());
+//        model.addAttribute("allRecipes", addRecipeRepository.findAll());
                 //addRecipeRepository.findAll());
 //        }
 

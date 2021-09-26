@@ -41,12 +41,22 @@
 
 
 <br>
-<h1 class="display-1">Matched Recipes</h1>
+<h1 class="display-1">Recipes</h1>
 
 
-<tr th:each="recipe : ${recipes}">
-    <li><a th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
-</tr>
+<div>
+    <h2>All recipes</h2>
+    <tr th:each="recipe : ${allRecipes}">
+        <li><a th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
+    </tr>
+</div>
+
+<div>
+    <h2>Matched Recipes</h2>
+    <tr th:each="recipe : ${matchedRecipes}">
+        <li><a th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
+    </tr>
+</div>
 <!--<div class="row">-->
 <!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
 <!--    <div class="col-sm-8">Recipe Name & Description</div>-->
