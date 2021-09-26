@@ -19,9 +19,9 @@
 </div>
 
 
-<div class="row">
+<div class="row text-white">
     <div class="row">
-        <form id="add-recipe" method="post">
+        <form class="color-white" id="add-recipe" method="post">
 
             <div class="row">
                 <div class="col-lg-2">
@@ -106,13 +106,13 @@
                     <div class="col-lg-10">
                         <p><br>Notes</p>
                         <textarea  class="form-control" th:field="${recipe.notes}" cols="145" rows="10"></textarea>
+                        <br><p> </p>
                     </div>
                 </div>
 
 
 
-                <div class="col-lg-5" >Featured Ingredients
-                    <p>From the ingredients in this recipe, which are the most essential?</p>
+                <div class="col-lg-5" >Which Ingredients would you consider most important?
                     <p>Add just the ingredient by name</p>
 
 
@@ -136,6 +136,13 @@
             <input class="form-control btn btn-success w-25" type="submit" value="Submit Recipe">
         </form>
     </div>
+    <style>
+        body {
+        background-image: url("/images/spicybg1.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        }
+        </style>
 
 </div>
 

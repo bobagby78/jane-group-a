@@ -1,5 +1,6 @@
 package org.launchcode.WhatsSup.controllers;
 
+import org.launchcode.WhatsSup.data.AddIngredientRepository;
 import org.launchcode.WhatsSup.data.AddRecipeRepository;
 import org.launchcode.WhatsSup.data.TagRepository;
 import org.launchcode.WhatsSup.data.UserRepository;
@@ -31,6 +32,9 @@ public class AddRecipeController { //refactor to just be RecipeController
 
     @Autowired
     public AuthenticationController authenticationController;
+
+    @Autowired
+    public AddIngredientRepository addIngredientRepository;
 
     @GetMapping("/add")
     public String displayAddRecipeForm(Model model, HttpSession session){
@@ -77,37 +81,43 @@ public class AddRecipeController { //refactor to just be RecipeController
         return"/recipe/view"; //optional, follow model from jobs with jobID as req param.
     }
 
-
-    @GetMapping("add-tag")
-    public String displayAddTagForm(@RequestParam Integer featuredRecipeId, Model model){
-        //TODO is Recipe or AddRecipe what should be optional<>?
-        //TODO RequestParam may need altered
-        Optional<Recipe> result = addRecipeRepository.findById(featuredRecipeId);
-        Recipe featuredIngredient = result.get();
-        model.addAttribute("title", "Add Tag to: " + featuredIngredient.getFeaturedIngredient());
-        model.addAttribute("tags", tagRepository.findAll());
-        FeaturedIngredientTagDTO featuredIngredientTag = new FeaturedIngredientTagDTO();
-        featuredIngredientTag.setFeaturedIngredient(featuredIngredient);
-        model.addAttribute("featuredRecipeTag", featuredIngredientTag);
-        return "recipe/add-tag.html";
+    @PostMapping("view/{recipeId}")
+    public String processAddIngredientForm(@ModelAttribute Ingredient newIngredient, Model model){
+        addIngredientRepository.save(newIngredient);
+        return "redirect:/recipe/view/{recipeId}";
     }
 
-    @PostMapping("add-tag")
-    public String processAddTagForm(@ModelAttribute @Valid FeaturedIngredientTagDTO featuredIngredientTag,
-                                    Errors errors,
-                                    Model model){
 
-        if (!errors.hasErrors()) {
-            Recipe featuredIngredient = featuredIngredientTag.getFeaturedIngredient();
-            Tag tag = featuredIngredientTag.getTag();
-            if (!featuredIngredient.getTags().contains(tag)){
-                featuredIngredient.addTag(tag);
-                addRecipeRepository.save(featuredIngredient);
-            }
-            return "redirect:detail?featuredIngredientId=" + featuredIngredient.getId();
-        }
-
-        return "redirect:add-tag";
-    }
+//    @GetMapping("add-tag")
+//    public String displayAddTagForm(@RequestParam Integer featuredRecipeId, Model model){
+//        //TODO is Recipe or AddRecipe what should be optional<>?
+//        //TODO RequestParam may need altered
+//        Optional<Recipe> result = addRecipeRepository.findById(featuredRecipeId);
+//        Recipe featuredIngredient = result.get();
+//        model.addAttribute("title", "Add Tag to: " + featuredIngredient.getFeaturedIngredient());
+//        model.addAttribute("tags", tagRepository.findAll());
+//        FeaturedIngredientTagDTO featuredIngredientTag = new FeaturedIngredientTagDTO();
+//        featuredIngredientTag.setFeaturedIngredient(featuredIngredient);
+//        model.addAttribute("featuredRecipeTag", featuredIngredientTag);
+//        return "recipe/add-tag.html";
+//    }
+//
+//    @PostMapping("add-tag")
+//    public String processAddTagForm(@ModelAttribute @Valid FeaturedIngredientTagDTO featuredIngredientTag,
+//                                    Errors errors,
+//                                    Model model){
+//
+//        if (!errors.hasErrors()) {
+//            Recipe featuredIngredient = featuredIngredientTag.getFeaturedIngredient();
+//            Tag tag = featuredIngredientTag.getTag();
+//            if (!featuredIngredient.getTags().contains(tag)){
+//                featuredIngredient.addTag(tag);
+//                addRecipeRepository.save(featuredIngredient);
+//            }
+//            return "redirect:detail?featuredIngredientId=" + featuredIngredient.getId();
+//        }
+//
+//        return "redirect:add-tag";
+//    }
 
 }
