@@ -1,0 +1,101 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <head th:replace="fragments :: head"></head>
+    <title> Add Recipe</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script></head>
+
+
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<div class="container">
+    <div class="d-flex align-items-center text-center justify-content-between my-3">
+        <h1 class="display-2 font-weight-bold text-warning ml-5 pl-5">Add Recipe</h1>
+        <div th:replace="fragments :: recipes"></div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="row">
+        <form id="add-recipe" method="post">
+
+            <div class="row">
+                <div class="col-lg-2">Title <input class="form-control" th:field="${recipe.recipeTitle}" autofocus></div>
+                <h5 class="text-danger" th:errors="${recipe.recipeTitle}"></h5>
+                <div class="col-lg-2">Author <input class="form-control" type="text" th:field="${recipe.recipeAuthor}"></div>
+                <h5 class="text-danger" th:errors="${recipe.recipeAuthor}"></h5>
+                <div class="col-lg-2">Prep time <input class="form-control" type="number" th:field="${recipe.prepTimeMinutes}"></div>
+                <div class="col-lg-2">Total time <input class="form-control" type="number" th:field="${recipe.totalTimeMinutes}"></div>
+                <h5 class="text-danger" th:errors="${recipe.totalTimeMinutes}"></h5>
+                <div class="col-lg-2">Serves <input class="form-control" type="number" th:field="${recipe.numServings}"></div>
+                <h5 class="text-danger" th:errors="${recipe.numServings}"></h5>
+            </div>
+            <div class="row">
+                <div class="col-lg-10">Please provide a brief recipe description:
+                    <p><textarea class="form-control" th:field="${recipe.recipeDescription}" cols="145" rows="3"></textarea></p>
+                    <h5 class="text-danger" th:errors="${recipe.recipeDescription}"></h5>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-5" >Ingredients
+                    <p>Add ingredients and amounts in the fields below</p>
+
+
+                    <div id="ingredList">
+                        <p><input class="form-control" type="text" th:field="${recipe.ingredients}"> </p>
+                    </div>
+                    <input class="form-control w-25 btn btn-primary" type="button" value="Add Ingredient" onclick="addIngredient()" autofocus>
+
+                </div>
+
+                <div class="col-lg-5" >Directions
+                    <p>Add direction steps in the fields below</p>
+
+
+                    <div id="steps">
+                        <p><input class="form-control w-100" type="text" th:field="${recipe.directions}" autofocus> </p>
+                    </div>
+                    <input class="form-control w-25 btn btn-primary" type="button" value="Add Step"  onclick="addStep()">
+                </div>
+
+
+                <script>
+                    function addStep(){
+                    let nextStep = document.createElement('p');
+                    nextStep.innerHTML = '<input class="form-control w-100" type="text" id="directions" name="directions" value="">'
+                    document.getElementById('steps').appendChild(nextStep);
+                    }
+                </script>
+
+                <script>
+                    function addIngredient(){
+                    let newIngred = document.createElement('p');
+                    newIngred.innerHTML = '<input class="form-control w-100" type="text" id="ingredients" name="ingredients" cols="70" value="">'
+                    document.getElementById('ingredList').appendChild(newIngred);
+                    }
+                </script>
+
+                <div class="row">
+
+                    <div class="col-lg-10">
+                        <p><br>Notes</p>
+                        <textarea class="form-control" th:field="${recipe.notes}" cols="145" rows="10"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <input class="form-control btn btn-success w-25" type="submit" value="Submit Recipe">
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

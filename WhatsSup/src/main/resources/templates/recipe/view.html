@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script></head>
+
+<head th:replace="fragments :: head">
+        <meta charset="UTF-8"/>
+    </head>
+    <title th:text="'Whats Sup - ' + ${recipe.recipeTitle}">
+        Whats Sup - View Recipe
+    </title>
+</head>
+
+<nav th:replace="fragments :: navigation"></nav>
+<style>
+body {
+    background-image: url('../../images/counter-of-food.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+body::before {
+    display: block;
+    content: '';
+    height: 60px;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="d-flex align-items-center text-center justify-content-between my-3">
+            <h1 class="display-2 font-weight-bold text-warning ml-5 pl-5">View Recipe</h1>
+            <div th:replace="fragments :: taco"></div>
+        </div>
+    </div>
+    <section class="container bg-warning w-50">
+        <div class="row text-center">
+            <h2 class="col border-bottom border-dark" th:text="${recipe.recipeTitle}">Recipe Title</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5 th:text="'Author: ' + ${recipe.recipeAuthor}">Author</h5>
+            </div>
+            <div class="col">
+                <h5 th:text="'Serves: ' + ${recipe.numServings} + ' people'">Number of Servings</h5>
+            </div>
+        </div>
+        <div class="row border-bottom border-dark">
+            <div class="col">
+                <h5 th:text="'Prep Time: ' + ${recipe.prepTimeMinutes} + ' minutes'">Prep Time: </h5>
+            </div>
+            <div class="col">
+                <h5 th:text="'Total Time: ' + ${recipe.totalTimeMinutes} + ' minutes'">Total Time: </h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5 th:text="'Description: ' + ${recipe.recipeDescription}">Description: </h5>
+            </div>
+        </div>
+    </section>
+<!--    this is where i need the grouping to start-->
+    <div class="container">
+        <div class="row">
+            <div class="col bg-warning w-50 mt-3">
+                <div class="row text-center">
+                    <h2 class="col border-bottom border-dark">Ingredients & amounts</h2>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <ul>
+                            <li th:each="ingredient : ${recipe.ingredients}"
+                                th:text="${ingredient}" class="h5">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container col bg-warning w-50 mt-3 ml-3">
+                    <div class="row text-center">
+                        <h2 class="col w-50 border-bottom border-dark">Step-by-Step Directions</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <ol>
+                                <li th:each="direction : ${recipe.directions}"
+                                    th:text="${direction}" class="h5">
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-warning mt-3">
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="border-bottom border-dark" th:text="'Notes from '+ ${recipe.recipeAuthor}">Notes from the Author: </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mx-4">
+                <h5 th:text="${recipe.notes}">There are no notes from the author for this recipe.</h5>
+            </div>
+        </div>
+    </div>
+<!--    this is where I need the grouping to end-->
+
+    <form method="post" class="container"> <!--don't know where it's gonna submit to-->
+        <div class="form-row pt-3 ml-5 pl-4">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Type ingredient here"
+                       name="newIngredient" required
+                        >
+                <!--^^ look into what jon has done to find how to add to collection ^^-->
+            </div>
+            <div class="col">
+                <select type="text" name="ingredientCategory" class="form-control" required>
+                    <option value="none" disabled selected="selected">Category</option>
+                    <option value="Spice">Spice</option>
+                    <option value="Protein">Protein</option>
+                    <option value="Side">Side</option>
+                    <option value="Condiment">Condiment</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" name="purchaseDate" placeholder="Purchase Date" class="form-control"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success">Add to My Kitchen!</button>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
+
+<!--https://getbootstrap.com/docs/4.4/components/forms/ for bootstrap that Haley already looked up-->
