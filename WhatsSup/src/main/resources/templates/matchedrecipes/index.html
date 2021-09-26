@@ -43,7 +43,10 @@
 <br>
 <h1 class="display-1">Matched Recipes</h1>
 
-<p th:text="${recipes}"></p>
+
+<tr th:each="recipe : ${recipes}">
+    <li><a th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
+</tr>
 <!--<div class="row">-->
 <!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
 <!--    <div class="col-sm-8">Recipe Name & Description</div>-->
