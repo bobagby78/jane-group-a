@@ -8,7 +8,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <head th:replace="fragments :: head"></head>
-    <!--    <title> Matched Recipes</title>-->
 </head>
 <style>
     img{
@@ -57,23 +56,6 @@
         <li><a th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
     </tr>
 </div>
-<!--<div class="row">-->
-<!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
-<!--    <div class="col-sm-8">Recipe Name & Description</div>-->
-<!--</div>-->
-
-<!--<div class="row" th:border="primary">-->
-<!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
-<!--    <div class="col-sm-8">Recipe Name & Description</div>-->
-<!--</div>-->
-<!--<div class="row">-->
-<!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
-<!--    <div class="col-sm-8">Recipe Name & Description</div>-->
-<!--</div>-->
-<!--<div class="row">-->
-<!--    <img class="img-thumbnail" th:src = "@{/images/recipe.png}"/>-->
-<!--    <div class="col-sm-8">Recipe Name & Description</div>-->
-<!--</div>-->
 
 </body>
 </html>
