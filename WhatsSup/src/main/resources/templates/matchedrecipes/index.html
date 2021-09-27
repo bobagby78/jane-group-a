@@ -8,8 +8,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <head th:replace="fragments :: head"></head>
+    <title>
+        Whats Sup - Recipes
+    </title>
 </head>
 <style>
+
+    .opaque {
+        opacity:90%;
+    }
     img{
         position: -ms-device-fixed;
     }
@@ -42,20 +49,20 @@
 <br>
 <h1 class="display-1">Recipes</h1>
 
-
-<div class="p-3 mb-2 bg-light text-dark" style="width:800px; margin:0 auto;">
-    <h2>All recipes</h2>
-    <tr th:each="recipe : ${allRecipes}">
-        <li><a th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
-    </tr>
-</div>
-
-<div class="p-3 mb-2 bg-light text-dark" style="width:800px; margin:0 auto;">
-    <h2>Matched Recipes</h2>
+<div class="p-3 mb-2 text-dark bg-secondary opaque" style="width:800px; margin:0 auto;">
+    <h2 class="display-4 font-weight-bold text-success text-center" style="color:indianred;">Matched Recipes</h2>
     <tr th:each="recipe : ${matchedRecipes}">
-        <li><a th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
+        <li class="my-1"><a class="lead font-weight-bold text-dark" th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
     </tr>
 </div>
+
+<div class="p-3 mb-2 text-dark bg-secondary opaque" style="width:800px; margin:0 auto;">
+    <h2 class="display-4 font-weight-bold text-center" style="color:indianred;">All recipes</h2>
+    <tr th:each="recipe : ${allRecipes}">
+        <li class="my-1"><a class="lead font-weight-bold text-dark" th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
+    </tr>
+</div>
+
         <style>
         body {
         background-image: url("/images/match-background.jpg");
