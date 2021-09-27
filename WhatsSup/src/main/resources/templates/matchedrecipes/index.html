@@ -57,7 +57,7 @@
 </div>
 
 <div class="p-3 mb-2 text-dark bg-secondary opaque" style="width:800px; margin:0 auto;">
-    <h2 class="display-4 font-weight-bold text-center" style="color:indianred;">All recipes</h2>
+    <h2 class="display-4 font-weight-bold text-center" style="color:#a74b4b;">All recipes</h2>
     <tr th:each="recipe : ${allRecipes}">
         <li class="my-1"><a class="lead font-weight-bold text-dark" th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
     </tr>
