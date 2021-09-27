@@ -22,7 +22,7 @@ class MyRecipeControllerTest {
 
     @Test
     void findByRecipeAuthor() {
-        MyRecipeController.findByRecipeAuthor();
+        MyRecipeController.findByUser();
     }
 
     @Test
