@@ -145,10 +145,10 @@
                     }
                 </script>
                 <label>Ingredient Name:  </label>
-                <input id="ingredientName" name="ingredientName" th:field="${ingredient.ingredientName}">
+                <input id="ingredientName" name="ingredientName" th:field="${ingredient.ingredientName}" required autofocus>
 
                 <label>Ingredient Category:  </label>
-                <select id="ingredientCategory" type="text" name="ingredientCategory" th:field="${ingredient.ingredientCategory}">
+                <select id="ingredientCategory" type="text" name="ingredientCategory" th:field="${ingredient.ingredientCategory}" required>
                     <option value="spice">Spice</option>
                     <option value="protein">Protein</option>
                     <option value="side">Side</option>
