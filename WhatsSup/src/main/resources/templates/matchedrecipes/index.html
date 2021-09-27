@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<meta charset="utf-8">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <head th:replace="fragments :: head"></head>
+    <title>
+        Whats Sup - Recipes
+    </title>
+</head>
+<style>
+
+    .opaque {
+        opacity:90%;
+    }
+    img{
+        position: -ms-device-fixed;
+    }
+    container-fluid {
+        position: center;
+        border: indianred;
+        font-weight: bold;
+        font-family-sans-serif: normal;
+
+    }
+    h1 { color:indianred;
+        font-size: xxx-large;
+        align-content: baseline;
+    }
+    body, html {
+        marginleft:30px;
+        margin-right:30px;
+        margin-bottom:30px;
+    }
+    row {
+        marginleft:80px;
+        margin-right:30px;
+    }
+</style>
+
+<body class="container-fluid pt-lg-3 font-weight-bold" >
+<nav th:replace="fragments :: navigation"></nav>
+
+
+<br>
+<h1 class="display-1">Recipes</h1>
+
+<div class="p-3 mb-2 text-dark bg-secondary opaque" style="width:800px; margin:0 auto;">
+    <h2 class="display-4 font-weight-bold text-success text-center" style="color:indianred;">Matched Recipes</h2>
+    <tr th:each="recipe : ${matchedRecipes}">
+        <li class="my-1"><a class="lead font-weight-bold text-dark" th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
+    </tr>
+</div>
+
+<div class="p-3 mb-2 text-dark bg-secondary opaque" style="width:800px; margin:0 auto;">
+    <h2 class="display-4 font-weight-bold text-center" style="color:#a74b4b;">All recipes</h2>
+    <tr th:each="recipe : ${allRecipes}">
+        <li class="my-1"><a class="lead font-weight-bold text-dark" th:href="'/recipe/view/' + ${recipe.getId()}" th:text="${recipe.getRecipeTitle()} + ' : ' + ${recipe.getRecipeDescription()}"></a></li>
+    </tr>
+</div>
+
+        <style>
+        body {
+        background-image: url("/images/match-background.jpg");
+        background-repeat: no-repeat;
+        background-size: 110% 150%;
+        }
+        </style>
+</body>
+</html>

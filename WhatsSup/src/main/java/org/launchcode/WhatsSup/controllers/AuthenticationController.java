@@ -128,7 +128,7 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:";
+        return "redirect:/kitchen";
     }
 
     @GetMapping("/login")
@@ -166,13 +166,13 @@ public class AuthenticationController {
 
         setUserInSession(request.getSession(), theUser);
 
-        return "redirect:kitchen"; // changed to kitchen so that when the user logs in, they don't go back to index/landing
+        return "redirect:/kitchen";
     }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
-        return "redirect:/index"; // changed to index/landing to reroute user to landing, where they get welcomed
+        return "redirect:/login";
     }
 
     private static void setUserInSession(HttpSession session, User user) {

@@ -8,6 +8,7 @@ class WhatsSupApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

@@ -40,7 +40,7 @@ body::before {
         </div>
         <div class="row">
             <div class="col">
-                <h5 th:text="'Author: ' + ${recipe.recipeAuthor}">Author</h5>
+                <h5 th:text="'Author: ' + ${recipe.user.getUsername()}">Author</h5>
             </div>
             <div class="col">
                 <h5 th:text="'Serves: ' + ${recipe.numServings} + ' people'">Number of Servings</h5>
@@ -96,7 +96,7 @@ body::before {
     <div class="container bg-warning mt-3">
         <div class="row">
             <div class="col text-center">
-                <h2 class="border-bottom border-dark" th:text="'Notes from '+ ${recipe.recipeAuthor}">Notes from the Author: </h2>
+                <h2 class="border-bottom border-dark" th:text="'Notes from '+ ${recipe.user.getUsername()}">Notes from the Author: </h2>
             </div>
         </div>
         <div class="row">
@@ -111,7 +111,8 @@ body::before {
         <div class="form-row pt-3 ml-5 pl-4">
             <div class="col">
                 <input type="text" class="form-control" placeholder="Type ingredient here"
-                       name="newIngredient" required
+                       name="ingredientName" required
+
                         >
                 <!--^^ look into what jon has done to find how to add to collection ^^-->
             </div>
@@ -129,6 +130,7 @@ body::before {
                 <input type="text" name="purchaseDate" placeholder="Purchase Date" class="form-control"
                 onfocus="(this.type='date')"
                 onblur="(this.type='text')">
+<!--                th:field="${ingredient.purchaseDate}" goes before onfocus, if the button ever works-->
             </div>
             <div class="col">
                 <button type="submit" class="btn btn-success">Add to My Kitchen!</button>
