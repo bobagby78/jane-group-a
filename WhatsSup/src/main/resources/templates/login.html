@@ -2,7 +2,51 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <link  th:href="@{styles.css}" rel="stylesheet">
+
+    <head th:replace="fragments :: head"></head>
+    <title>What's Sup - Login</title>
+    <nav class="navbar navbar-expand-xl navbar-light fixed-top mb-4 " style="background-color: #d15C4A">
+        <div class="container">
+            <a class="navbar-brand" href="/index">WhatsSup</a>
+        </div>
+    </nav>
+<body class="container">
+
+<div class="container">
+    <div class="d-flex text-center justify-content-between mx-5">
+        <div class="d-flex flex-column mr-5 pr-5">
+            <h1 class="display-2 font-weight-bold ml-5 pl-5 mb-3 pb-3">Login</h1>
+            <h3 class="col ml-5 pl-5">Don't have an account? <a href="/register">Register </a></h3>
+        </div>
+        <form method="post" class="mr-5">
+            <div class="form-group">
+                <label th:for="username" class="lead font-weight-bold">Username
+                    <input autofocus type="text" class="form-control" th:field="${loginFormDTO.username}" required>
+                </label>
+                <p class="error" th:errors="${loginFormDTO.username}"></p>
+            </div>
+            <div class="form-group">
+                <label th:for="password" class="lead font-weight-bold">Password
+                    <input class="form-control" th:field="${loginFormDTO.password}" type="password" required>
+                </label>
+                <p class="error" th:errors="${loginFormDTO.password}"></p>
+            </div>
+            <button type="submit" class="btn btn-success" value="Log In">Login</button>
+            <label class="lead font-weight-bold">
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+
+    <div class="container">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <!--        <span class="psw">Forgot <a href="#">password?</a></span>-->
+    </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+<style>
 
 body::before {
     display: block;
@@ -11,8 +55,12 @@ body::before {
 }
 body {font-family: Arial, Helvetica, sans-serif;
   background: no-repeat url("https://media.npr.org/assets/img/2016/12/20/food4.gif");
-  background-size: cover;}}
-form {border: 3px solid #f1f1f1;}
+  background-size: cover;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+}
 
 input[type=text], input[type=password] {
   width: 100%;
@@ -73,57 +121,4 @@ span.psw {
   }
 }
 </style>
-    <head th:replace="fragments :: head"></head>
-    <title>What's Sup - Login</title>
-    <nav class="navbar navbar-expand-xl navbar-light fixed-top mb-4 " style="background-color: #d15C4A">
-        <div class="container">
-            <a class="navbar-brand" href="/index">WhatsSup</a>
-        </div>
-    </nav>
-<body class="container">
-
-<div class="container">
-    <div class="d-flex text-center justify-content-between mx-5">
-        <div class="d-flex flex-column mr-5 pr-5">
-            <h1 class="display-2 font-weight-bold ml-5 pl-5 mb-3 pb-3">Login</h1>
-            <h3 class="col ml-5 pl-5">Don't have an account? <a href="/register">Register </a></h3>
-        </div>
-        <form method="post" class="mr-5">
-            <div class="form-group">
-                <label th:for="username" class="lead font-weight-bold">Username
-                    <input autofocus type="text" class="form-control" th:field="${loginFormDTO.username}" required>
-                </label>
-                <p class="error" th:errors="${loginFormDTO.username}"></p>
-            </div>
-            <div class="form-group">
-                <label th:for="password" class="lead font-weight-bold">Password
-                    <input class="form-control" th:field="${loginFormDTO.password}" type="password" required>
-                </label>
-                <p class="error" th:errors="${loginFormDTO.password}"></p>
-            </div>
-            <button type="submit" class="btn btn-success" value="Log In">Login</button>
-            <label class="lead font-weight-bold">
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-
-    <div class="container">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <!--        <span class="psw">Forgot <a href="#">password?</a></span>-->
-    </div>
-        </form>
-    </div>
-</div>
-</div>
-
-<form method="post">
-
-
-
-
-
-</form>
-
-<p>Don't have an account? <a href="/register">Register for one.</a></p>
-
-</body>
 </html>

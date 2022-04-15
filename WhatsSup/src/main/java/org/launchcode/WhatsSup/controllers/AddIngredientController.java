@@ -23,7 +23,8 @@ public class AddIngredientController {
 
     @PostMapping("/add")
     public String processAddIngredientForm(@ModelAttribute Ingredient newIngredient, Model model){
-       addIngredientRepository.save(newIngredient);
+
+        addIngredientRepository.save(newIngredient);
         return "/ingredient/add";
     }
 
