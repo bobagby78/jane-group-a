@@ -44,7 +44,7 @@ public class MyKitchenController {
             }else{
                 other.add(ingredient);
             }
-            //
+
         }
 
         model.addAttribute("title", "Hey, Dude. This is my kitchen");
